@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="3dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp">
+
+        <ImageView
+            android:id="@+id/imgFilm"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:src="@drawable/poster_a_star"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/titleFilm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imgFilm"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:text="@string/judul_filem"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/descFilm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imgFilm"
+            android:layout_below="@id/titleFilm"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/descripsi_film"
+            android:maxLines="4"
+            android:textSize="12sp"/>
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btn_details"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@id/imgFilm"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="97dp"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
+            android:text="@string/details"
+            android:textColor="#ffff"
+            android:shadowColor="@color/colorPrimary"
+            app:buttonColor="@color/colorPrimaryDark"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
