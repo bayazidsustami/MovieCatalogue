@@ -3,45 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="16dp"
     app:cardCornerRadius="4dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:layout_marginTop="7dp"
     app:cardElevation="3dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="7dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imgFilm"
-            android:layout_width="100dp"
-            android:layout_height="140dp"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
             android:src="@drawable/poster_a_star"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/titleFilm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imgFilm"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="30dp"
-            android:text="@string/judul_filem"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"/>
-
-        <TextView
-            android:id="@+id/descFilm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imgFilm"
-            android:layout_below="@id/titleFilm"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/descripsi_film"
-            android:maxLines="4"
-            android:textSize="15sp"/>
-    </RelativeLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:padding="3dp"
+            android:text="@string/judul_filem"
+            android:background="@color/colorBlackTrans"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
 </androidx.cardview.widget.CardView>

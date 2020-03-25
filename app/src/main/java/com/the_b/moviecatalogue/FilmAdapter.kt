@@ -6,41 +6,48 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.list_item.view.*
 
-class FilmAdapter internal constructor(private val context: Context): BaseAdapter(){
+class FilmAdapter(private val listFilm: ArrayList<FilmModel>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(){
+    private var onItemClickCallback: OnItemClickCallback? = null
 
-    internal var filmItem = arrayListOf<FilmModel>()
-
-    override fun getView(position: Int, view: View?, parent: ViewGroup?): View {
-        var itemView = view
-        if (itemView == null){
-            itemView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
-        }
-
-        val viewHolder = ViewHolder(itemView as View)
-
-        val film = getItem(position) as FilmModel
-        viewHolder.bind(film)
-        return itemView
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun getItem(position: Int): Any = filmItem[position]
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        fun bindItem(itemFilm: FilmModel){
+            with(itemView){
+                Glide.with(itemView.context)
+                    .load(itemFilm.imgFilm)
+                    .apply(RequestOptions().override(350,350))
+                    .into(itemView.imgFilm)
 
-    override fun getItemId(position: Int): Long = position.toLong()
+                itemView.titleFilm.text = itemFilm.title
 
-    override fun getCount(): Int = filmItem.size
-
-    private inner class ViewHolder internal constructor(view: View){
-
-        private val title: TextView = view.findViewById(R.id.titleFilm)
-        private val desc: TextView = view.findViewById(R.id.descFilm)
-        private var imgFilm: ImageView = view.findViewById(R.id.imgFilm)
-
-        internal fun bind(films: FilmModel){
-            title.text = films.title
-            desc.text = films.desc
-            Glide.with(context).load(films.imgFilm).into(imgFilm)
+                itemView.setOnClickListener {
+                    onItemClickCallback?.onItemClick(itemFilm)
+                }
+            }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int = listFilm.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindItem(listFilm[position])
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClick(data: FilmModel)
+    }
+
 }
