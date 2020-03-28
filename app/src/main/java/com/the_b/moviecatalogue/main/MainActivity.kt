@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue
+package com.the_b.moviecatalogue.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0f
 
-        val sectionPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)
+        val sectionPagerAdapter =
+            SectionPagerAdapter(
+                this,
+                supportFragmentManager
+            )
         viewPager.adapter = sectionPagerAdapter
         tabs.setupWithViewPager(viewPager)
     }

@@ -1,18 +1,25 @@
-package com.the_b.moviecatalogue
+package com.the_b.moviecatalogue.adapter
 
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.the_b.moviecatalogue.main.HomeFragment
+import com.the_b.moviecatalogue.R
 
 class SectionPagerAdapter(private val context: Context, fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     @StringRes
-    private val TAB_TITLE = intArrayOf(R.string.tab_1, R.string.tab_2)
+    private val TAB_TITLE = intArrayOf(
+        R.string.tab_1,
+        R.string.tab_2
+    )
 
     override fun getItem(position: Int): Fragment {
-        return HomeFragment.newInstance(position)
+        return HomeFragment.newInstance(
+            position
+        )
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

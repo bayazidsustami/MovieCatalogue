@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue
+package com.the_b.moviecatalogue.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.model.FilmModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class FilmAdapter(private val listFilm: ArrayList<FilmModel>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(){
+class FilmAdapter(private val listFilm: MutableList<FilmModel>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(){
+
+    fun setData(movies: List<FilmModel>){
+        listFilm.clear()
+        listFilm.addAll(movies)
+        notifyDataSetChanged()
+    }
+
     private var onItemClickCallback: OnItemClickCallback? = null
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
@@ -18,11 +28,8 @@ class FilmAdapter(private val listFilm: ArrayList<FilmModel>): RecyclerView.Adap
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bindItem(itemFilm: FilmModel){
             with(itemView){
-                Glide.with(itemView.context)
-                    .load(itemFilm.imgFilm)
-                    .apply(RequestOptions().override(350,350))
-                    .into(itemView.imgFilm)
 
+                Glide.with(context).load(ApiRepository.IMAGE_URL+itemFilm.poster_path).into(itemView.imgFilm)
                 itemView.titleFilm.text = itemFilm.title
 
                 itemView.setOnClickListener {

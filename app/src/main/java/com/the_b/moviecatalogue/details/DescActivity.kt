@@ -1,10 +1,13 @@
-package com.the_b.moviecatalogue
+package com.the_b.moviecatalogue.details
 
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.main.HomeFragment
+import com.the_b.moviecatalogue.model.FilmModel
 
 class DescActivity : AppCompatActivity() {
 
@@ -30,12 +33,6 @@ class DescActivity : AppCompatActivity() {
         actionBar!!.title = films.title
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        title.text = films.title
-        desc.text = films.desc
-        director.text = films.director
-        years.text = films.years
-
-        Glide.with(this).load(films.imgFilm).into(imgFilm)
     }
 
     override fun onSupportNavigateUp(): Boolean {
