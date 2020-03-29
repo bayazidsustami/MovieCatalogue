@@ -11,27 +11,23 @@ interface ApiService {
 
     @GET("discover/movie")
     fun loadFilm(
-        //@Query("api_key") api_key: String,
         @Query("language") language: String = "en-US"
     ): Call<FilmModelResponse>
 
     @GET("discover/tv")
     fun loadTvShow(
-        //@Query("api_key") api_key: String,
         @Query("language") language: String = "en-US"
     ): Call<TvShowModelResponse>
 
     @GET("movie/{id}")
     fun loadDetailFilm(
         @Path("id") id: String,
-        //@Query("api_key") api_key: String,
         @Query("language") language: String
     )
 
     @GET("tv/{id}")
     fun loadDetailTv(
         @Path("id") id: String,
-        //@Query("api_key") api_key: String,
         @Query("language") language: String
     )
 }
