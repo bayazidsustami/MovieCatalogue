@@ -7,8 +7,11 @@ android {
     buildToolsVersion "29.0.3"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     defaultConfig {
@@ -55,6 +58,7 @@ dependencies {
     //retrofit libraries
     implementation "com.squareup.retrofit2:retrofit:2.7.1"
     implementation "com.squareup.retrofit2:converter-gson:2.7.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.2.0"
 
     //architecture component libraries
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'

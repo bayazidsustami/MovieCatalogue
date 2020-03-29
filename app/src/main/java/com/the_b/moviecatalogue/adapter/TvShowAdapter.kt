@@ -12,16 +12,17 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView.Adapter<TvShowAdapter.ViewHolder>(){
 
-    private var onItemClickCallback: OnItemClickCallback? = null
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
-        this.onItemClickCallback = onItemClickCallback
-    }
 
     fun setData(tvShow: List<TvShowModel>){
         listTv.clear()
         listTv.addAll(tvShow)
         notifyDataSetChanged()
+    }
+
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)  {

@@ -1,6 +1,5 @@
 package com.the_b.moviecatalogue
 
-import android.view.View
 import java.util.*
 
 fun getLocale(): String {
@@ -15,10 +14,4 @@ fun getLocale(): String {
     return language
 }
 
-fun View.visible(){
-    visibility = View.VISIBLE
-}
-
-fun View.invisible(){
-    visibility = View.INVISIBLE
-}
+const val TAG = "My_Tag"
