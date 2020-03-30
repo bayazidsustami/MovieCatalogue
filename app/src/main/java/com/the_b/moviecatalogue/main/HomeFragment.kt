@@ -6,13 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.TAG
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
 import com.the_b.moviecatalogue.details.DescActivity
@@ -33,7 +31,6 @@ class HomeFragment : Fragment() {
     companion object{
         const val INDEX = "index"
         const val EXTRA_DATA = "extra data"
-        const val EXTRA_DATA1 = "extra data1"
 
         fun newInstance(index: Int): HomeFragment {
             val fragment = HomeFragment()

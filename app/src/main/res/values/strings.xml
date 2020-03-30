@@ -13,11 +13,9 @@
     <string name="tab_1">Movie</string>
     <string name="tab_2">Tv Show</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="change_language">Change Language</string>
     <string name="popularity">Popularity :</string>
-    <string name="popularVal">39.012</string>
+    <string name="popularVal">00.00</string>
     <string name="vote_average">Vote Average :</string>
     <string name="status">Status :</string>
     <string name="released">Released</string>
