@@ -18,7 +18,6 @@
             android:id="@+id/imgFilm"
             android:layout_width="match_parent"
             android:layout_height="290dp"
-            android:src="@drawable/poster_a_star"
             android:scaleType="fitXY"/>
 
         <TextView

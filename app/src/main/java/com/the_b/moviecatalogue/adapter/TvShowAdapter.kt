@@ -1,12 +1,13 @@
 package com.the_b.moviecatalogue.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.TAG
 import com.the_b.moviecatalogue.api.ApiRepository
 import com.the_b.moviecatalogue.model.TvShowModel
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -32,8 +33,8 @@ class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView
                 itemView.titleFilm.text = itemTv.name
 
                 itemView.setOnClickListener {
-                    //onItemClickCallback?.onItemClick(itemTv)
-                    Toast.makeText(context, "You choose ${itemTv.name}", Toast.LENGTH_SHORT).show()
+                    onItemClickCallback?.onItemClick(itemTv)
+                    Log.d(TAG, "clicked ${onItemClickCallback?.onItemClick(itemTv)} ")
                 }
             }
         }
@@ -53,5 +54,4 @@ class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView
     interface OnItemClickCallback {
         fun onItemClick(data: TvShowModel)
     }
-
 }

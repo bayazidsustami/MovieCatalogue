@@ -7,6 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class FilmModel(
     var id: String? = null,
     var title: String? = null,
-    var poster_path: String? = null,
-    var overview: String? = null
+    var poster_path: String? = null
 ): Parcelable

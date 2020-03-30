@@ -1,5 +1,7 @@
 package com.the_b.moviecatalogue.api
 
+import com.the_b.moviecatalogue.model.DescFilmModel
+import com.the_b.moviecatalogue.model.DescTvModel
 import com.the_b.moviecatalogue.model.FilmModelResponse
 import com.the_b.moviecatalogue.model.TvShowModelResponse
 import retrofit2.Call
@@ -23,11 +25,11 @@ interface ApiService {
     fun loadDetailFilm(
         @Path("id") id: String,
         @Query("language") language: String
-    )
+    ): Call<DescFilmModel>
 
     @GET("tv/{id}")
     fun loadDetailTv(
         @Path("id") id: String,
         @Query("language") language: String
-    )
+    ): Call<DescTvModel>
 }

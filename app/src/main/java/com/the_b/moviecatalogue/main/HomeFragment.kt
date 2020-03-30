@@ -1,5 +1,6 @@
 package com.the_b.moviecatalogue.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,15 +12,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.TAG
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
+import com.the_b.moviecatalogue.details.DescActivity
+import com.the_b.moviecatalogue.details.DescTvActivity
 import com.the_b.moviecatalogue.model.FilmModel
 import com.the_b.moviecatalogue.model.TvShowModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    //private lateinit var presentData: PresentData
     private lateinit var filmAdapter: FilmAdapter
     private lateinit var tvShowAdapter: TvShowAdapter
     private lateinit var viewModel: MainViewModel
@@ -30,6 +33,7 @@ class HomeFragment : Fragment() {
     companion object{
         const val INDEX = "index"
         const val EXTRA_DATA = "extra data"
+        const val EXTRA_DATA1 = "extra data1"
 
         fun newInstance(index: Int): HomeFragment {
             val fragment = HomeFragment()
@@ -41,10 +45,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -59,7 +60,9 @@ class HomeFragment : Fragment() {
 
         list_film.setHasFixedSize(true)
 
+        tvShowAdapter = TvShowAdapter(dataTv)
         filmAdapter = FilmAdapter(dataFilm)
+
         list_film.adapter = filmAdapter
         list_film.layoutManager = GridLayoutManager(context, 2)
 
@@ -74,32 +77,38 @@ class HomeFragment : Fragment() {
 
         viewModel.getTvShow().observe(viewLifecycleOwner, Observer {
             if (it != null){
-                tvShowAdapter = TvShowAdapter(dataTv)
                 list_film.adapter = tvShowAdapter
                 tvShowAdapter.setData(it.results)
                 showLoading(false)
             }
         })
 
-        var index = 1
+        var index = 0
         if (arguments != null){
+
             index = arguments?.getInt(INDEX, 0) as Int
+
             if (index == 1){
                 loadDataTv()
-                tvShowAdapter = TvShowAdapter(dataTv)
                 list_film.adapter = tvShowAdapter
-                tvShowAdapter = TvShowAdapter(dataTv)
-                /*tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
+
+                tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
                     override fun onItemClick(data: TvShowModel) {
-                        Toast.makeText(context, "you choose ${data.name}", Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "Clicked Fragment")
+                        val intent1 = Intent(context, DescTvActivity::class.java )
+                        intent1.putExtra(EXTRA_DATA1, data)
+                        startActivity(intent1)
                     }
-                })*/
+                })
             }
+
             Log.d("index", "index $index")
             loadDataFilm()
             filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
                 override fun onItemClick(data: FilmModel) {
-                    Toast.makeText(context, "you choose ${data.title}", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, DescActivity::class.java)
+                    intent.putExtra(EXTRA_DATA, data)
+                    startActivity(intent)
                 }
             })
         }

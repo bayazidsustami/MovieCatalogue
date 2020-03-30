@@ -28,7 +28,6 @@ class FilmAdapter(private val listFilm: MutableList<FilmModel>): RecyclerView.Ad
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bindItem(itemFilm: FilmModel){
             with(itemView){
-
                 Glide.with(context).load(ApiRepository.IMAGE_URL+itemFilm.poster_path).into(itemView.imgFilm)
                 itemView.titleFilm.text = itemFilm.title
 
@@ -53,5 +52,4 @@ class FilmAdapter(private val listFilm: MutableList<FilmModel>): RecyclerView.Ad
     interface OnItemClickCallback {
         fun onItemClick(data: FilmModel)
     }
-
 }
