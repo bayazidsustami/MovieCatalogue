@@ -34,7 +34,6 @@ class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView
 
                 itemView.setOnClickListener {
                     onItemClickCallback?.onItemClick(itemTv)
-                    Log.d(TAG, "clicked ${onItemClickCallback?.onItemClick(itemTv)} ")
                 }
             }
         }

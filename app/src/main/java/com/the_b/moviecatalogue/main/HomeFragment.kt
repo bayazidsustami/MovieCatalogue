@@ -85,24 +85,21 @@ class HomeFragment : Fragment() {
 
         var index = 0
         if (arguments != null){
-
             index = arguments?.getInt(INDEX, 0) as Int
-
             if (index == 1){
                 loadDataTv()
                 list_film.adapter = tvShowAdapter
 
                 tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
                     override fun onItemClick(data: TvShowModel) {
-                        Log.d(TAG, "Clicked Fragment")
                         val intent1 = Intent(context, DescTvActivity::class.java )
-                        intent1.putExtra(EXTRA_DATA1, data)
+                        intent1.putExtra(EXTRA_DATA, data)
                         startActivity(intent1)
                     }
                 })
             }
-
             Log.d("index", "index $index")
+
             loadDataFilm()
             filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
                 override fun onItemClick(data: FilmModel) {

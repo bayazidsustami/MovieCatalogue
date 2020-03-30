@@ -29,7 +29,7 @@ class DescTvActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_desc_tv)
 
-        val tv = intent.getParcelableExtra(HomeFragment.EXTRA_DATA1) as TvShowModel
+        val tv = intent.getParcelableExtra(HomeFragment.EXTRA_DATA) as TvShowModel
 
         val actionBar = supportActionBar
         actionBar!!.title = tv.name
