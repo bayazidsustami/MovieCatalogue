@@ -22,4 +22,8 @@
     <string name="poster_film">Poster Film</string>
     <string name="episodes">Episodes :</string>
     <string name="episodesVal">20 eps</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="goto_favorites">Goto Favorites</string>
+    <string name="add_to_favorites">Add to Favorites</string>
 </resources>
