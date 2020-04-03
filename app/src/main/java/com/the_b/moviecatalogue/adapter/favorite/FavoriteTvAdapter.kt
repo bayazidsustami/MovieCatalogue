@@ -1,5 +1,7 @@
 package com.the_b.moviecatalogue.adapter.favorite
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,16 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.favorites.details.DescFavTv
 import com.the_b.moviecatalogue.model.local.TvShows
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class FavoriteTvAdapter: RecyclerView.Adapter<FavoriteTvAdapter.ViewHolder>() {
-
-    private var onItemClickCallback: OnItemClickCallback? = null
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
-        this.onItemClickCallback = onItemClickCallback
-    }
+class FavoriteTvAdapter(private val activity: Activity): RecyclerView.Adapter<FavoriteTvAdapter.ViewHolder>() {
 
     var listTv = ArrayList<TvShows>()
         set(listTv) {
@@ -46,15 +43,17 @@ class FavoriteTvAdapter: RecyclerView.Adapter<FavoriteTvAdapter.ViewHolder>() {
                 Glide.with(context).load(ApiRepository.IMAGE_URL+tvItem.photo).into(itemView.imgFilm)
                 itemView.titleFilm.text = tvItem.title
 
-                itemView.setOnClickListener {
-                    onItemClickCallback?.onItemClicked(tvItem)
-                }
+                itemView.setOnClickListener(CustomClickListener(adapterPosition, object : CustomClickListener.OnItemClickCallback{
+                    override fun onItemClicked(view: View, position: Int) {
+                        val intent = Intent(activity, DescFavTv::class.java)
+                        intent.putExtra(DescFavTv.EXTRA_POSITION, position)
+                        intent.putExtra(DescFavTv.EXTRA_DATA, tvItem)
+                        activity.startActivityForResult(intent, DescFavTv.REQUEST_DEL_TV)
+                    }
+
+                }))
             }
         }
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: TvShows)
     }
 
     fun removeItem(position: Int){

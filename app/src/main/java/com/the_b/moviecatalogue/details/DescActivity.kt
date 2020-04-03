@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -123,6 +124,8 @@ class DescActivity : AppCompatActivity(){
             values.put(DatabaseContract.FilmColumn.VOTE_AVERAGE, voteAverage)
 
             filmHelper.insert(values)
+
+            Toast.makeText(this, getString(R.string.addedFav), Toast.LENGTH_SHORT).show()
         }
     }
 

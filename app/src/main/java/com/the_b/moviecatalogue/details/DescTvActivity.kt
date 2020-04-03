@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -117,7 +118,7 @@ class DescTvActivity : AppCompatActivity() {
             values.put(DatabaseContract.TvShowColumn.VOTE_AVERAGE, voteAverage)
 
             tvHelper.insert(values)
-
+            Toast.makeText(this, getString(R.string.addedFav), Toast.LENGTH_SHORT).show()
         }
 
     }

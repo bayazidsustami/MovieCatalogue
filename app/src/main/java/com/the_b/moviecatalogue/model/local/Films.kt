@@ -1,5 +1,9 @@
 package com.the_b.moviecatalogue.model.local
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Films(
     var id: Int,
     var title: String?,
@@ -9,4 +13,4 @@ data class Films(
     var popularity: String?,
     var voteAverage: String?,
     var status: String?
-)
+): Parcelable

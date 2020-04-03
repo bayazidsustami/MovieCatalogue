@@ -1,29 +1,28 @@
 package com.the_b.moviecatalogue.favorites
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.favorite.FavoriteFilmAdapter
 import com.the_b.moviecatalogue.adapter.favorite.FavoriteTvAdapter
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.db.TvShowHelper
+import com.the_b.moviecatalogue.favorites.details.DescFavFilm
+import com.the_b.moviecatalogue.favorites.details.DescFavTv
 import com.the_b.moviecatalogue.helper.MappingFilmHelper
 import com.the_b.moviecatalogue.helper.MappingTvShowHelper
-import com.the_b.moviecatalogue.model.local.Films
-import com.the_b.moviecatalogue.model.local.TvShows
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-
 
 class FavoriteFragment : Fragment() {
 
@@ -34,7 +33,6 @@ class FavoriteFragment : Fragment() {
 
     companion object{
         const val INDEX = "index"
-        const val EXTRA_DATA = "extra data"
 
         fun newInstance(index: Int): FavoriteFragment {
             val f = FavoriteFragment()
@@ -60,7 +58,7 @@ class FavoriteFragment : Fragment() {
         list_film.layoutManager = GridLayoutManager(context, 2)
         list_film.setHasFixedSize(true)
         favFilmAdapter = FavoriteFilmAdapter(context as Activity)
-        favTvAdapter = FavoriteTvAdapter()
+        favTvAdapter = FavoriteTvAdapter(context as Activity)
         list_film.adapter = favFilmAdapter
 
         var index = 0
@@ -72,26 +70,33 @@ class FavoriteFragment : Fragment() {
             if (index == 1){
                 list_film.adapter = favTvAdapter
                 loadTvAsync()
-                favTvAdapter.setOnItemClickCallback(object : FavoriteTvAdapter.OnItemClickCallback{
-                    override fun onItemClicked(data: TvShows) {
-                        Toast.makeText(context, "You Choose ${data.title}", Toast.LENGTH_SHORT).show()
-                    }
-
-                })
             }
 
             filmHelper = FilmHelper.getInstance(context as Activity)
             filmHelper.open()
-
             loadFilmsAsync()
-
-            favFilmAdapter.setOnItemClickCallback(object : FavoriteFilmAdapter.OnItemClickCallback{
-                override fun onItemClicked(data: Films) {
-                    Toast.makeText(context, "You Choose ${data.title}", Toast.LENGTH_SHORT).show()
-                }
-
-            })
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (data != null){
+            when(requestCode){
+                DescFavFilm.REQUEST_DEL -> {
+                    if (resultCode == DescFavFilm.RESULT_DEL){
+                        val position = data.getIntExtra(DescFavFilm.EXTRA_POSITION, 0)
+                        favFilmAdapter.removeItem(position)
+                        Toast.makeText(context, "Success Delete", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                DescFavTv.REQUEST_DEL_TV -> {
+                    if (resultCode == DescFavTv.RESULT_DEL_TV){
+                        val position = data.getIntExtra(DescFavTv.EXTRA_POSITION, 0)
+                        favTvAdapter.removeItem(position)
+                    }
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun loadFilmsAsync(){
@@ -131,5 +136,4 @@ class FavoriteFragment : Fragment() {
         filmHelper.close()
         tvHelper.close()
     }
-
 }

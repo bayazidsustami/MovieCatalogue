@@ -13,7 +13,7 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_favorite)
 
         supportActionBar?.elevation = 0f
-        supportActionBar?.title = "Favorites"
+        supportActionBar?.title = getString(R.string.favorite)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

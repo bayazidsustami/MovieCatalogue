@@ -58,6 +58,6 @@ class TvShowHelper(context: Context) {
     }
 
     fun deleteById(id: String): Int {
-        return database.delete(DATABASE_TABLE, "$_ID '$id'", null)
+        return database.delete(DATABASE_TABLE, "$_ID = '$id'", null)
     }
 }
