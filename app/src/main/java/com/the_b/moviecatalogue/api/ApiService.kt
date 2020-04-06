@@ -32,4 +32,22 @@ interface ApiService {
         @Path("id") id: String,
         @Query("language") language: String
     ): Call<DescTvModel>
+
+    @GET("search/movie")
+    fun searchFilm(
+        @Query("query") query: String,
+        @Query("language") language: String
+    ): Call<FilmModelResponse>
+
+    @GET("search/tv")
+    fun searchTv(
+        @Query("query") query: String,
+        @Query("language") language: String
+    ): Call<TvShowModelResponse>
+
+    @GET("discover/movie")
+    fun releaseFilm(
+        @Query("primary_release_date.gte") gte: String,
+        @Query("primary_release_date.lte") ite: String
+    ): Call<FilmModelResponse>
 }
