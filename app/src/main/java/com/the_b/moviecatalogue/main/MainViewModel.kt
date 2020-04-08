@@ -58,11 +58,55 @@ class MainViewModel: ViewModel() {
         })
     }
 
+    fun setSearchFilm(query: String){
+        val apiService = ApiRepository.createService(ApiService::class.java)
+        val call = apiService.searchFilm(query, getLocale())
+        call.enqueue(object : Callback<FilmModelResponse>{
+            override fun onFailure(call: Call<FilmModelResponse>, t: Throwable) {
+                Log.d(TAG, "Response ---> ${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<FilmModelResponse>,
+                response: Response<FilmModelResponse>
+            ) {
+                val data = response.body() as FilmModelResponse
+                listFilm.postValue(data)
+            }
+        })
+    }
+
+    fun setSearchTv(query: String){
+        val apiService = ApiRepository.createService(ApiService::class.java)
+        val call = apiService.searchTv(query, getLocale())
+        call.enqueue(object : Callback<TvShowModelResponse>{
+            override fun onFailure(call: Call<TvShowModelResponse>, t: Throwable) {
+                Log.d(TAG, "Response ----> ${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<TvShowModelResponse>,
+                response: Response<TvShowModelResponse>
+            ) {
+                val data = response.body() as TvShowModelResponse
+                listTvShow.postValue(data)
+            }
+        })
+    }
+
     fun getFilms(): LiveData<FilmModelResponse>{
         return listFilm
     }
 
     fun getTvShow(): LiveData<TvShowModelResponse>{
+        return listTvShow
+    }
+
+    fun getSearchFilm(): LiveData<FilmModelResponse>{
+        return listFilm
+    }
+
+    fun getSearchTv(): LiveData<TvShowModelResponse>{
         return listTvShow
     }
 }

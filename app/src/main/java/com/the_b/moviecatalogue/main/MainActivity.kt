@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
 import com.the_b.moviecatalogue.favorites.FavoriteActivity
+import com.the_b.moviecatalogue.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,8 +41,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.gotoFav -> {
-                val intent = Intent(this, FavoriteActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, FavoriteActivity::class.java))
+            }
+            R.id.search -> {
+                startActivity(Intent(this, SearchActivity::class.java))
             }
         }
         return super.onOptionsItemSelected(item)
