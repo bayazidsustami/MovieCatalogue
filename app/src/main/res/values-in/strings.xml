@@ -34,4 +34,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="addedFav">Ditambahkan ke Favorit</string>
+    <string name="search_label">Cari Film atau Tv Show</string>
+    <string name="filter_list">Filter Pencarian</string>
+    <string name="choose_category">Pilih Kategori</string>
+    <string name="film">Film</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="choose">Pilih</string>
+    <string name="close">Tutup</string>
+    <string name="setting_notification">Atur Notifikasi</string>
 </resources>

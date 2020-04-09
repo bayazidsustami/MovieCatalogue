@@ -34,4 +34,12 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="addedFav">Added to favorites</string>
+    <string name="search_label">Search Film or Tv Show</string>
+    <string name="filter_list">Filter List of Search</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="film">Film</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="choose">Choose</string>
+    <string name="close">Close</string>
+    <string name="setting_notification">Setting Notification</string>
 </resources>

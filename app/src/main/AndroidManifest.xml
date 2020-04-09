@@ -13,7 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".search.SearchActivity"></activity>
+
+        <receiver
+            android:name=".settings.notification.ReleaseNotification"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <receiver
+            android:name=".settings.notification.DailyNotification"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".settings.SettingActivity" />
+        <activity android:name=".search.SearchActivity" />
         <activity android:name=".favorites.details.DescFavTv" />
         <activity android:name=".favorites.details.DescFavFilm" />
         <activity android:name=".favorites.FavoriteActivity" />

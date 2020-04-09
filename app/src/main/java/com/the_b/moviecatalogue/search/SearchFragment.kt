@@ -1,16 +1,19 @@
 package com.the_b.moviecatalogue.search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.TAG
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
 import com.the_b.moviecatalogue.main.MainViewModel
@@ -30,6 +33,8 @@ class SearchFragment : Fragment() {
     private var dataFilm = mutableListOf<FilmModel>()
     private var dataTv = mutableListOf<TvShowModel>()
 
+    private var queries = ""
+
     companion object{
         const val INDEX = "index"
         const val QUERY = "query"
@@ -41,6 +46,17 @@ class SearchFragment : Fragment() {
             fragment.arguments = bundle
 
             return fragment
+        }
+
+        fun searchInstance(queries: String): SearchFragment {
+            val fm = SearchFragment()
+            val data = Bundle()
+            data.putString(QUERY, queries)
+            fm.arguments = data
+            Log.d(TAG, data.getString(QUERY).toString())
+            Log.d("ARGUMENT", fm.arguments.toString())
+
+            return fm
         }
     }
 
@@ -56,8 +72,6 @@ class SearchFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         listSearch.setHasFixedSize(true)
-
-        val queries: String? = arguments?.getString(QUERY)
 
         filmAdapter = FilmAdapter(dataFilm)
         tvShowAdapter = TvShowAdapter(dataTv)
@@ -81,20 +95,19 @@ class SearchFragment : Fragment() {
             }
         })
 
+
+
         var index = 0
         if (arguments != null){
             index = arguments?.getInt(INDEX, 0) as Int
+            queries = arguments?.getString(QUERY, "") as String
+            Log.d("ARGUMENTGET", queries)
             if (index == 1){
-                if (queries != null) {
-                    loadDataTv(queries)
-                }
+                loadDataTv(queries)
+                listSearch.adapter = tvShowAdapter
             }
-
-            if (queries != null) {
-                loadDataFilm(queries)
-            }
+            loadDataFilm(queries)
         }
-
     }
 
     private fun loadDataFilm(query: String){
@@ -116,5 +129,4 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
 }

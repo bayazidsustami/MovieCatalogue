@@ -39,11 +39,7 @@ class SearchActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 try {
-                    val bundle = Bundle()
-                    val fragment = SearchFragment()
-                    bundle.putString(SearchFragment.QUERY, query)
-                    fragment.arguments = bundle
-                    Log.d(com.the_b.moviecatalogue.TAG, bundle.toString())
+                    SearchFragment.searchInstance(query)
                 } catch (e: Exception){
                     Log.d("error bundle", e.message.toString())
                 }
@@ -58,7 +54,7 @@ class SearchActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-       override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }

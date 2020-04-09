@@ -35,6 +35,10 @@ class DescActivity : AppCompatActivity(){
     private lateinit var details: DescFilmModel
     private var film: Films? = null
 
+    companion object{
+        const val EXTRA_DATA = "extra_data"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_desc)
@@ -42,7 +46,7 @@ class DescActivity : AppCompatActivity(){
         filmHelper = FilmHelper.getInstance(applicationContext)
         filmHelper.open()
 
-        val films = intent.getParcelableExtra(HomeFragment.EXTRA_DATA) as FilmModel
+        val films = intent.getParcelableExtra(EXTRA_DATA) as FilmModel
 
         val actionBar = supportActionBar
         actionBar!!.title = films.title

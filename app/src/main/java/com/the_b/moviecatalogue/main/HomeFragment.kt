@@ -96,7 +96,7 @@ class HomeFragment : Fragment() {
             filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
                 override fun onItemClick(data: FilmModel) {
                     val intent = Intent(context, DescActivity::class.java)
-                    intent.putExtra(EXTRA_DATA, data)
+                    intent.putExtra(DescActivity.EXTRA_DATA, data)
                     startActivity(intent)
                 }
             })

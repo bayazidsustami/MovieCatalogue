@@ -70,7 +70,7 @@ class MainViewModel: ViewModel() {
                 call: Call<FilmModelResponse>,
                 response: Response<FilmModelResponse>
             ) {
-                val data = response.body() as FilmModelResponse
+                val data = response.body()
                 listFilm.postValue(data)
             }
         })
@@ -88,7 +88,7 @@ class MainViewModel: ViewModel() {
                 call: Call<TvShowModelResponse>,
                 response: Response<TvShowModelResponse>
             ) {
-                val data = response.body() as TvShowModelResponse
+                val data = response.body()
                 listTvShow.postValue(data)
             }
         })
