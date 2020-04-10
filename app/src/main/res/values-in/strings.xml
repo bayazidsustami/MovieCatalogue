@@ -42,4 +42,7 @@
     <string name="choose">Pilih</string>
     <string name="close">Tutup</string>
     <string name="setting_notification">Atur Notifikasi</string>
+    <string name="appwidget_text">Film Favorit</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="search_not_found">Tidak Ditemukan</string>
 </resources>
