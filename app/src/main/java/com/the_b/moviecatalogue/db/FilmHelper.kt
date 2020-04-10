@@ -53,8 +53,25 @@ class FilmHelper(context: Context) {
         )
     }
 
+    fun queryById(id: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$_ID = ?",
+            arrayOf(id),
+            null,
+            null,
+            null,
+            null
+        )
+    }
+
     fun insert(values: ContentValues?): Long{
         return database.insert(DATABASE_TABLE, null, values)
+    }
+
+    fun update(id: String, values: ContentValues?): Int {
+        return database.update(DATABASE_TABLE, values, "$_ID = ?", arrayOf(id))
     }
 
     fun deleteById(id: String): Int {

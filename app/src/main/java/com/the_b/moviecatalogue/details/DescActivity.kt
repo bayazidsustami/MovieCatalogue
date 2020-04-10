@@ -63,8 +63,6 @@ class DescActivity : AppCompatActivity(){
         val apiService = ApiRepository.createService(ApiService::class.java)
         call = apiService.loadDetailFilm(films.id.toString(), getLocale())
 
-//        loadData()
-
         showLoading(true)
 
         if (call.isExecuted){

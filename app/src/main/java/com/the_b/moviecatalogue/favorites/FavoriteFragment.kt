@@ -2,7 +2,10 @@ package com.the_b.moviecatalogue.favorites
 
 import android.app.Activity
 import android.content.Intent
+import android.database.ContentObserver
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.favorite.FavoriteFilmAdapter
 import com.the_b.moviecatalogue.adapter.favorite.FavoriteTvAdapter
+import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.CONTENT_URI_FILM
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.db.TvShowHelper
 import com.the_b.moviecatalogue.favorites.details.DescFavFilm
@@ -66,16 +70,15 @@ class FavoriteFragment : Fragment() {
             index = arguments?.getInt(INDEX, 0) as Int
             tvHelper = TvShowHelper.getInstance(context as Activity)
             tvHelper.open()
-
             if (index == 1){
                 list_film.adapter = favTvAdapter
                 loadTvAsync()
             }
-
             filmHelper = FilmHelper.getInstance(context as Activity)
             filmHelper.open()
             loadFilmsAsync()
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -103,6 +106,7 @@ class FavoriteFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main){
             val defferedFilms = async(Dispatchers.IO){
                 val cursor = filmHelper.queryAll()
+                //val cursor = context?.contentResolver?.query(CONTENT_URI_FILM, null, null, null,null)
                 MappingFilmHelper.mapCursorToArrayList(cursor)
             }
             val film = defferedFilms.await()

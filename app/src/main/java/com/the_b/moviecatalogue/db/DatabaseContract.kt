@@ -1,8 +1,12 @@
 package com.the_b.moviecatalogue.db
 
+import android.net.Uri
 import android.provider.BaseColumns
 
-class DatabaseContract {
+object DatabaseContract {
+
+    const val AUTHORITY = "com.the_b.moviecatalogue"
+    const val SCHEME = "content"
 
     internal class FilmColumn: BaseColumns{
         companion object{
@@ -15,6 +19,11 @@ class DatabaseContract {
             const val POPULARITY = "popularity"
             const val VOTE_AVERAGE = "vote_average"
             const val STATUS = "status"
+
+            val CONTENT_URI_FILM: Uri = Uri.Builder().scheme(SCHEME)
+                .authority(AUTHORITY)
+                .appendPath(TABLE_FILM)
+                .build()
         }
     }
 
@@ -29,6 +38,11 @@ class DatabaseContract {
             const val EPISODES = "episode"
             const val VOTE_AVERAGE = "vote_average"
             const val STATUS = "status"
+
+            val CONTENT_URI_TV: Uri = Uri.Builder().scheme(SCHEME)
+                .authority(AUTHORITY)
+                .appendPath(TABLE_TV)
+                .build()
         }
     }
 }
