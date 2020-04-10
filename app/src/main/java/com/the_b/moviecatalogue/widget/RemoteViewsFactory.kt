@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiRepository.IMAGE_URL
 import com.the_b.moviecatalogue.db.FilmHelper
-import com.the_b.moviecatalogue.db.TvShowHelper
 import com.the_b.moviecatalogue.helper.MappingFilmHelper
 import com.the_b.moviecatalogue.model.local.Films
 

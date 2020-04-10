@@ -1,7 +1,7 @@
 package com.the_b.moviecatalogue.favorites
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.favorite.SectionPagerFavAdapter
 import kotlinx.android.synthetic.main.activity_favorite.*

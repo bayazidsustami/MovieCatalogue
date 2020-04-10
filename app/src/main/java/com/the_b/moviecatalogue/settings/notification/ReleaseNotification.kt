@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
 import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
@@ -77,6 +78,8 @@ class ReleaseNotification : BroadcastReceiver() {
         val builder: NotificationCompat.Builder
 
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
         if (filmNotifList.size < MAX_NOTIFICATION){
             val intent = Intent(context, DescActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -89,6 +92,8 @@ class ReleaseNotification : BroadcastReceiver() {
                 .setContentText("New Film Release${film.title}")
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setContentIntent(pendingIntent)
+                .setVibrate(longArrayOf(1000,1000,1000))
+                .setSound(alarmSound)
                 .setGroup(RELEASE_CHANNEL_GROUP)
                 .setGroupSummary(true)
                 .setAutoCancel(true)
@@ -112,6 +117,8 @@ class ReleaseNotification : BroadcastReceiver() {
                 .setGroupSummary(true)
                 .setContentIntent(pendingIntent)
                 .setStyle(inboxStyle)
+                .setVibrate(longArrayOf(1000,1000,1000))
+                .setSound(alarmSound)
                 .setAutoCancel(true)
         }
 

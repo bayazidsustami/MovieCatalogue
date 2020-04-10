@@ -2,7 +2,6 @@ package com.the_b.moviecatalogue.helper
 
 import android.database.Cursor
 import com.the_b.moviecatalogue.db.DatabaseContract
-import com.the_b.moviecatalogue.model.FilmModel
 import com.the_b.moviecatalogue.model.local.Films
 
 object MappingFilmHelper {

@@ -9,7 +9,6 @@ import android.net.Uri
 import com.the_b.moviecatalogue.db.DatabaseContract.AUTHORITY
 import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.CONTENT_URI_FILM
 import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
-import com.the_b.moviecatalogue.db.DatabaseContract.TvShowColumn.Companion.CONTENT_URI_TV
 import com.the_b.moviecatalogue.db.DatabaseContract.TvShowColumn.Companion.TABLE_TV
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.db.TvShowHelper
@@ -33,11 +32,8 @@ class DatabaseProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         filmHelper = FilmHelper.getInstance(context as Context)
-        tvShowHelper = TvShowHelper.getInstance(context as Context)
 
         filmHelper.open()
-        tvShowHelper.open()
-
         return true
     }
 

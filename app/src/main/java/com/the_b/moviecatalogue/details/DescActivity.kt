@@ -15,7 +15,6 @@ import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.db.DatabaseContract
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.getLocale
-import com.the_b.moviecatalogue.main.HomeFragment
 import com.the_b.moviecatalogue.model.DescFilmModel
 import com.the_b.moviecatalogue.model.FilmModel
 import com.the_b.moviecatalogue.model.local.Films
@@ -130,28 +129,6 @@ class DescActivity : AppCompatActivity(){
             Toast.makeText(this, getString(R.string.addedFav), Toast.LENGTH_SHORT).show()
         }
     }
-
-//    private fun loadData(){
-//        showLoading(true)
-//
-//        if (call.isExecuted){
-//            return
-//        }
-//
-//        call.enqueue(object : Callback<DescFilmModel>{
-//            override fun onFailure(call: Call<DescFilmModel>, t: Throwable) {
-//                showLoading(false)
-//                Log.d(com.the_b.moviecatalogue.TAG, "error ---> ${t.message}")
-//            }
-//
-//            override fun onResponse(call: Call<DescFilmModel>, response: Response<DescFilmModel>) {
-//                showLoading(false)
-//                val data = response.body() as DescFilmModel
-//                Log.d(com.the_b.moviecatalogue.TAG, "response ----> $data")
-//                viewModel.setDetailsFilm(data)
-//            }
-//        })
-//    }
 
     private fun showFilm(film: DescFilmModel) {
         titleFilm.text = film.title

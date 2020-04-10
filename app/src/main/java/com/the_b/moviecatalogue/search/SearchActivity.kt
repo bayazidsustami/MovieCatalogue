@@ -3,15 +3,11 @@ package com.the_b.moviecatalogue.search
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
 import com.the_b.moviecatalogue.adapter.SectionSearchPagerAdapter
 import kotlinx.android.synthetic.main.activity_search.*
-import java.lang.Exception
 
 class SearchActivity : AppCompatActivity() {
 

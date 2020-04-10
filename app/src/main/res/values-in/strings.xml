@@ -45,4 +45,5 @@
     <string name="appwidget_text">Film Favorit</string>
     <string name="add_widget">Tambah Widget</string>
     <string name="search_not_found">Tidak Ditemukan</string>
+    <string name="poster_films">Poster Films</string>
 </resources>

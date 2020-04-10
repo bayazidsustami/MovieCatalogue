@@ -2,10 +2,7 @@ package com.the_b.moviecatalogue.favorites
 
 import android.app.Activity
 import android.content.Intent
-import android.database.ContentObserver
 import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -133,6 +130,12 @@ class FavoriteFragment : Fragment() {
                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadFilmsAsync()
+        loadTvAsync()
     }
 
     override fun onDestroy() {

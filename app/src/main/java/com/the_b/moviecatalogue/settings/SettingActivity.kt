@@ -1,7 +1,7 @@
 package com.the_b.moviecatalogue.settings
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.the_b.moviecatalogue.R
 
 class SettingActivity : AppCompatActivity() {
