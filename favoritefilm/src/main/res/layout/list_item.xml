@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:layout_marginTop="7dp"
+    app:cardElevation="3dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgFilm"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/poster_film" />
+
+        <TextView
+            android:id="@+id/titleFilm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:padding="3dp"
+            android:text="@string/judul_filem"
+            android:background="@color/colorBlackTrans"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

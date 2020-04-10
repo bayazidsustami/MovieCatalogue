@@ -5,7 +5,7 @@ import android.provider.BaseColumns
 
 object DatabaseContract {
 
-    const val AUTHORITY = "com.the_b.moviecatalogue"
+    const val AUTHORITY = "com.theb.moviecatalogue.movie"
     const val SCHEME = "content"
 
     internal class FilmColumn: BaseColumns{

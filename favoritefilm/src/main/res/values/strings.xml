@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Favorite Film</string>
+    <string name="judul_filem">Film Title</string>
+    <string name="poster_film">Poster Film</string>
+</resources>
