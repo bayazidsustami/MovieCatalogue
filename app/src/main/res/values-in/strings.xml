@@ -3,12 +3,7 @@
     <string name="app_name">Katalog Film</string>
 
     <string name="judul_filem">Judul Filem</string>
-    <string name="descripsi_film">descripsi film</string>
     <string name="details">Detail</string>
-    <string name="title">Judul Film</string>
-    <string name="director">Sutradara :</string>
-    <string name="name_director">Nama Sutradara</string>
-    <string name="year">Tahun :</string>
     <string name="_2020">2020</string>
     <string name="description">Ringkasan</string>
     <string name="tab_1">Film</string>
@@ -24,7 +19,6 @@
     <string name="episodes">Jumlah Episode :</string>
     <string name="episodesVal">20 eps</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="goto_favorites">Pergi Ke Favorit</string>
     <string name="add_to_favorites">Tambah Favorit</string>
     <string name="delete">Hapus</string>
@@ -35,15 +29,8 @@
     <string name="no">No</string>
     <string name="addedFav">Ditambahkan ke Favorit</string>
     <string name="search_label">Cari Film atau Tv Show</string>
-    <string name="filter_list">Filter Pencarian</string>
-    <string name="choose_category">Pilih Kategori</string>
-    <string name="film">Film</string>
-    <string name="tv_show">Tv Show</string>
-    <string name="choose">Pilih</string>
-    <string name="close">Tutup</string>
     <string name="setting_notification">Atur Notifikasi</string>
     <string name="appwidget_text">Film Favorit</string>
-    <string name="add_widget">Tambah Widget</string>
     <string name="search_not_found">Tidak Ditemukan</string>
     <string name="poster_films">Poster Films</string>
 </resources>

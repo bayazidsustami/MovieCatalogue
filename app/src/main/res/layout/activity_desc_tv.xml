@@ -8,7 +8,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/details_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".details.DescActivity">
@@ -114,7 +113,6 @@
             app:layout_constraintTop_toBottomOf="@+id/popularity" />
 
         <TextView
-            android:id="@+id/statusLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
