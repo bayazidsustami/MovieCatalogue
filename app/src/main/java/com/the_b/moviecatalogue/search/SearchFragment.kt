@@ -1,10 +1,12 @@
 package com.the_b.moviecatalogue.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +15,8 @@ import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.TAG
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
+import com.the_b.moviecatalogue.details.DescActivity
+import com.the_b.moviecatalogue.details.DescTvActivity
 import com.the_b.moviecatalogue.main.MainViewModel
 import com.the_b.moviecatalogue.model.FilmModel
 import com.the_b.moviecatalogue.model.TvShowModel
@@ -81,14 +85,22 @@ class SearchFragment : Fragment() {
         viewModel.getSearchFilm().observe(viewLifecycleOwner, Observer {
             if (it != null){
                 filmAdapter.setData(it.results)
-                showLoading(false)
+                if (it.results.isEmpty()){
+                    Toast.makeText(context, "Not Found", Toast.LENGTH_SHORT).show()
+                } else {
+                    showLoading(false)
+                }
             }
         })
 
         viewModel.getSearchTv().observe(viewLifecycleOwner, Observer {
             if (it != null){
                 tvShowAdapter.setData(it.results)
-                showLoading(false)
+                if (it.results.isEmpty()){
+                    Toast.makeText(context, "Not Found", Toast.LENGTH_SHORT).show()
+                } else {
+                    showLoading(false)
+                }
             }
         })
 
@@ -97,13 +109,29 @@ class SearchFragment : Fragment() {
         var index = 0
         if (arguments != null){
             index = arguments?.getInt(INDEX, 0) as Int
-            queries = arguments?.getString(QUERY, "") as String
+            //queries = arguments?.getString(QUERY, "") as String
             Log.d("ARGUMENTGET", queries)
             if (index == 1){
                 loadDataTv(queries)
                 listSearch.adapter = tvShowAdapter
+
+                tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
+                    override fun onItemClick(data: TvShowModel) {
+                        val intent = Intent(context, DescTvActivity::class.java)
+                        intent.putExtra(DescTvActivity.EXTRA_DATA, data)
+                        startActivity(intent)
+                    }
+
+                })
             }
             loadDataFilm(queries)
+            filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
+                override fun onItemClick(data: FilmModel) {
+                    val intent = Intent(context, DescActivity::class.java)
+                    intent.putExtra(DescActivity.EXTRA_DATA, data)
+                    startActivity(intent)
+                }
+            })
         }
     }
 

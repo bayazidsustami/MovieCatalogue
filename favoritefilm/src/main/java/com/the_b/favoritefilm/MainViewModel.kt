@@ -10,7 +10,7 @@ class MainViewModel: ViewModel() {
     private val filmList = MutableLiveData<ArrayList<FilmModel>>()
 
     companion object{
-        val CONTENT_URI: Uri = Uri.parse("content://com.theb.moviecatalogue.movie/film")
+        val CONTENT_URI: Uri = Uri.parse("content://com.theb.moviecatalogue/film")
     }
 
     internal fun setData(context: Context){
@@ -35,6 +35,7 @@ class MainViewModel: ViewModel() {
                 val status = dataCursor.getString(dataCursor.getColumnIndexOrThrow("status"))
 
                 result.add(FilmModel(id, title, photo, overview, date, popularity, voteAverage, status))
+
             }
 
             filmList.postValue(result)

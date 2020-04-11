@@ -47,6 +47,8 @@ class DailyNotification : BroadcastReceiver() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.enableVibration(true)
+            channel.vibrationPattern = longArrayOf(1000, 1000, 1000)
             builder.setChannelId(CHANNEL_ID)
             notificationManager.createNotificationChannel(channel)
         }

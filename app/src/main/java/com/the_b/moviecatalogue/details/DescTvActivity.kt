@@ -34,6 +34,10 @@ class DescTvActivity : AppCompatActivity() {
     private lateinit var details: DescTvModel
     private var tvShow: TvShows? = null
 
+    companion object{
+        const val EXTRA_DATA = "extra data"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_desc_tv)
@@ -41,7 +45,7 @@ class DescTvActivity : AppCompatActivity() {
         tvHelper = TvShowHelper.getInstance(applicationContext)
         tvHelper.open()
 
-        val tv = intent.getParcelableExtra(HomeFragment.EXTRA_DATA) as TvShowModel
+        val tv = intent.getParcelableExtra(EXTRA_DATA) as TvShowModel
 
         val actionBar = supportActionBar
         actionBar!!.title = tv.name

@@ -30,7 +30,6 @@ class HomeFragment : Fragment() {
 
     companion object{
         const val INDEX = "index"
-        const val EXTRA_DATA = "extra data"
 
         fun newInstance(index: Int): HomeFragment {
             val fragment = HomeFragment()
@@ -85,7 +84,7 @@ class HomeFragment : Fragment() {
                 tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
                     override fun onItemClick(data: TvShowModel) {
                         val intent1 = Intent(context, DescTvActivity::class.java )
-                        intent1.putExtra(EXTRA_DATA, data)
+                        intent1.putExtra(DescTvActivity.EXTRA_DATA, data)
                         startActivity(intent1)
                     }
                 })

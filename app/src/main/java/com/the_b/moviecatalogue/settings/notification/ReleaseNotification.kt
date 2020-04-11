@@ -124,6 +124,8 @@ class ReleaseNotification : BroadcastReceiver() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.enableVibration(true)
+            channel.vibrationPattern = longArrayOf(1000, 1000, 1000)
             builder.setChannelId(CHANNEL_ID)
             notificationManager.createNotificationChannel(channel)
         }
@@ -137,7 +139,7 @@ class ReleaseNotification : BroadcastReceiver() {
         val intent = Intent(context, ReleaseNotification::class.java)
 
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.HOUR_OF_DAY,8)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
 

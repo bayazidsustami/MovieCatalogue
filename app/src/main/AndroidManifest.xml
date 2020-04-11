@@ -50,7 +50,8 @@
         <activity android:name=".search.SearchActivity" />
         <activity android:name=".favorites.details.DescFavTv" />
         <activity android:name=".favorites.details.DescFavFilm" />
-        <activity android:name=".favorites.FavoriteActivity" />
+        <activity android:name=".favorites.FavoriteActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".details.DescTvActivity" />
         <activity android:name=".details.DescActivity" />
         <activity android:name=".main.MainActivity">

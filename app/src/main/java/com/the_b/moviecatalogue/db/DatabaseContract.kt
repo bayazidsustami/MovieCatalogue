@@ -5,10 +5,10 @@ import android.provider.BaseColumns
 
 object DatabaseContract {
 
-    const val AUTHORITY = "com.theb.moviecatalogue.movie"
+    const val AUTHORITY = "com.theb.moviecatalogue"
     const val SCHEME = "content"
 
-    internal class FilmColumn: BaseColumns{
+    class FilmColumn: BaseColumns{
         companion object{
             const val TABLE_FILM = "film"
             const val _ID = "_id"
@@ -27,7 +27,7 @@ object DatabaseContract {
         }
     }
 
-    internal class TvShowColumn: BaseColumns {
+    class TvShowColumn: BaseColumns {
         companion object{
             const val TABLE_TV = "tv_show"
             const val _ID = "_id"
