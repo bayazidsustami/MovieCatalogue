@@ -2,4 +2,11 @@
     <string name="app_name">Favorite Film</string>
     <string name="judul_filem">Film Title</string>
     <string name="poster_film">Poster Film</string>
+    <string name="_2020">2020</string>
+    <string name="popularity">Popularity</string>
+    <string name="popularVal">3.6</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="status">Status</string>
+    <string name="released">Released</string>
+    <string name="description">Overview</string>
 </resources>

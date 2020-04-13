@@ -1,5 +1,6 @@
 package com.the_b.favoritefilm
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,13 @@ class Adapter(private val listFilmModel: ArrayList<FilmModel>) : RecyclerView.Ad
             with(itemView){
                 titleFilm.text = filmItem.title
                 Glide.with(itemView).load("https://image.tmdb.org/t/p/w92"+filmItem.photo).into(imgFilm)
+
+                itemView.setOnClickListener {
+                    val intent = Intent(context, DetailsActivity::class.java).apply {
+                        putExtra(DetailsActivity.EXTRA_DATA, filmItem)
+                    }
+                    context.startActivity(intent)
+                }
             }
         }
     }
