@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".details.DescActivity">
+
+
+        <ImageView
+            android:id="@+id/imageFilm"
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/poster_film"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/titleFilm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/judul_filem"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/releaseFilm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/_2020"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toBottomOf="@+id/titleFilm" />
+
+        <TextView
+            android:id="@+id/popularityLabels"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/popularity"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toBottomOf="@+id/releaseFilm" />
+
+        <TextView
+            android:id="@+id/popularity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/popularVal"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/releaseFilm" />
+
+        <TextView
+            android:id="@+id/voteAverageLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/vote_average"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toBottomOf="@+id/popularityLabels" />
+
+        <TextView
+            android:id="@+id/voteLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/popularVal"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/popularity" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/status"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toBottomOf="@+id/voteAverageLabel" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/released"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/voteLabel" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.94" />
+
+        <include
+            layout="@layout/overview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageFilm" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="297dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
