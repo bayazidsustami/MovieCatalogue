@@ -25,13 +25,13 @@ class MainViewModel: ViewModel() {
 
         if (dataCursor != null) {
             while (dataCursor.moveToNext()){
-                val id = dataCursor.getInt(dataCursor.getColumnIndexOrThrow("id"))
+                val id = dataCursor.getInt(dataCursor.getColumnIndexOrThrow("_id"))
                 val title = dataCursor.getString(dataCursor.getColumnIndexOrThrow("title"))
                 val photo = dataCursor.getString(dataCursor.getColumnIndexOrThrow("photo"))
                 val overview = dataCursor.getString(dataCursor.getColumnIndexOrThrow("overview"))
                 val date = dataCursor.getString(dataCursor.getColumnIndexOrThrow("date"))
                 val popularity = dataCursor.getString(dataCursor.getColumnIndexOrThrow("popularity"))
-                val voteAverage = dataCursor.getString(dataCursor.getColumnIndexOrThrow("voteAverage"))
+                val voteAverage = dataCursor.getString(dataCursor.getColumnIndexOrThrow("vote_average"))
                 val status = dataCursor.getString(dataCursor.getColumnIndexOrThrow("status"))
 
                 result.add(FilmModel(id, title, photo, overview, date, popularity, voteAverage, status))

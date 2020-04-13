@@ -3,13 +3,12 @@
     package="com.the_b.moviecatalogue">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
 
-    <uses-permission
+    <permission
         android:name="com.theb.moviecatalogue.READ_DATABASE"
         android:protectionLevel="normal" />
-    <uses-permission
+    <permission
         android:name="com.theb.moviecatalogue.WRITE_DATABASE"
         android:protectionLevel="normal" />
 

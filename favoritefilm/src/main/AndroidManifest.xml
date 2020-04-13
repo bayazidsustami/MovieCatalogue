@@ -3,8 +3,11 @@
     package="com.the_b.favoritefilm">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <uses-permission android:name="com.theb.moviecatalogue.READ_DATABASE"/>
+    <uses-permission-sdk-23 android:name="com.theb.moviecatalogue.READ_DATABASE"/>
     <uses-permission android:name="com.theb.moviecatalogue.WRITE_DATABASE"/>
+    <uses-permission-sdk-23 android:name="com.theb.moviecatalogue.WRITE_DATABASE"/>
 
     <application
         android:allowBackup="true"
