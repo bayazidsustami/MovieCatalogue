@@ -12,6 +12,7 @@ import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiRepository
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.model.local.Films
+import com.the_b.moviecatalogue.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc_fav_film.*
 import kotlinx.android.synthetic.main.overview_layout.*
 
@@ -74,6 +75,7 @@ class DescFavFilm : AppCompatActivity() {
             .setCancelable(false)
             .setPositiveButton(getString(R.string.yes)){ _, _ ->
                 val result = filmHelper.deleteById(film?.id.toString()).toLong()
+                FavoriteWidget.updateWidget(this)
                 if (result > 0){
                     val intent = Intent()
                     intent.putExtra(EXTRA_POSITION, position)

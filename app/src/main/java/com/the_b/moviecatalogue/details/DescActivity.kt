@@ -18,6 +18,7 @@ import com.the_b.moviecatalogue.getLocale
 import com.the_b.moviecatalogue.model.DescFilmModel
 import com.the_b.moviecatalogue.model.FilmModel
 import com.the_b.moviecatalogue.model.local.Films
+import com.the_b.moviecatalogue.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc.*
 import kotlinx.android.synthetic.main.overview_layout.*
 import retrofit2.Call
@@ -127,6 +128,7 @@ class DescActivity : AppCompatActivity(){
             filmHelper.insert(values)
 
             Toast.makeText(this, getString(R.string.addedFav), Toast.LENGTH_SHORT).show()
+            FavoriteWidget.updateWidget(this)
         }
     }
 
