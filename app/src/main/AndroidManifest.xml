@@ -46,7 +46,7 @@
             android:exported="true" />
 
         <activity android:name=".settings.SettingActivity" />
-        <activity android:name=".search.SearchActivity" />
+        <activity android:name=".search.SearchActivity"/>
         <activity android:name=".favorites.details.DescFavTv" />
         <activity android:name=".favorites.details.DescFavFilm" />
         <activity android:name=".favorites.FavoriteActivity"
