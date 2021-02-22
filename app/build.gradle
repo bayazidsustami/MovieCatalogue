@@ -90,7 +90,4 @@ dependencies {
 
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-
-    //paging coroutine
-    implementation "com.github.mirmilad:paging-coroutine:v1.0.0-alpha01"
 }
