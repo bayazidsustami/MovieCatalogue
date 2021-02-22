@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.favorites.details.DescFavFilm
-import com.the_b.moviecatalogue.model.local.Films
+import com.the_b.moviecatalogue.data.model.local.Films
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class FavoriteFilmAdapter(private val activity: Activity): RecyclerView.Adapter<FavoriteFilmAdapter.ViewHolder>() {

@@ -17,8 +17,8 @@ import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.details.DescActivity
 import com.the_b.moviecatalogue.main.MainActivity
-import com.the_b.moviecatalogue.model.FilmModel
-import com.the_b.moviecatalogue.model.FilmModelResponse
+import com.the_b.moviecatalogue.data.model.FilmModel
+import com.the_b.moviecatalogue.data.model.FilmModelResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

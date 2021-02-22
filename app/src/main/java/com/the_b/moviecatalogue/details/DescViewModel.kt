@@ -3,8 +3,8 @@ package com.the_b.moviecatalogue.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.the_b.moviecatalogue.model.DescFilmModel
-import com.the_b.moviecatalogue.model.DescTvModel
+import com.the_b.moviecatalogue.data.model.DescFilmModel
+import com.the_b.moviecatalogue.data.model.DescTvModel
 
 class DescViewModel: ViewModel() {
 

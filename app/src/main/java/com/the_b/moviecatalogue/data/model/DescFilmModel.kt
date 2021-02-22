@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.model
+package com.the_b.moviecatalogue.data.model
 
 import com.google.gson.annotations.SerializedName
 

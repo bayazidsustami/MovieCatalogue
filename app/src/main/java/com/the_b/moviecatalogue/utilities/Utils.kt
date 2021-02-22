@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue
+package com.the_b.moviecatalogue.utilities
 
 import java.util.*
 

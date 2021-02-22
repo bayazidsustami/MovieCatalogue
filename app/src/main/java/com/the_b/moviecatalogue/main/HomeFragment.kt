@@ -15,8 +15,8 @@ import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
 import com.the_b.moviecatalogue.details.DescActivity
 import com.the_b.moviecatalogue.details.DescTvActivity
-import com.the_b.moviecatalogue.model.FilmModel
-import com.the_b.moviecatalogue.model.TvShowModel
+import com.the_b.moviecatalogue.data.model.FilmModel
+import com.the_b.moviecatalogue.data.model.TvShowModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {

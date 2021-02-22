@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.db.TvShowHelper
-import com.the_b.moviecatalogue.model.local.TvShows
+import com.the_b.moviecatalogue.data.model.local.TvShows
 import kotlinx.android.synthetic.main.activity_desc_fav_tv.*
 import kotlinx.android.synthetic.main.overview_layout.*
 

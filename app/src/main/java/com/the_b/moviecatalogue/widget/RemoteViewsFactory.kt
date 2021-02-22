@@ -11,7 +11,7 @@ import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder.IMAGE_URL
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.helper.MappingFilmHelper
-import com.the_b.moviecatalogue.model.local.Films
+import com.the_b.moviecatalogue.data.model.local.Films
 
 internal class RemoteViewsFactory(private val context: Context): RemoteViewsService.RemoteViewsFactory {
     private var filmItem = ArrayList<Films>()

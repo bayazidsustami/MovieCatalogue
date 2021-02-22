@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
-import com.the_b.moviecatalogue.model.FilmModel
+import com.the_b.moviecatalogue.data.model.FilmModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class FilmAdapter(private val listFilm: MutableList<FilmModel>): RecyclerView.Adapter<FilmAdapter.ViewHolder>(){

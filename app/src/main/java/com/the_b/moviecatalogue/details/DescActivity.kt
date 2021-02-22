@@ -14,10 +14,10 @@ import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.db.DatabaseContract
 import com.the_b.moviecatalogue.db.FilmHelper
-import com.the_b.moviecatalogue.getLocale
-import com.the_b.moviecatalogue.model.DescFilmModel
-import com.the_b.moviecatalogue.model.FilmModel
-import com.the_b.moviecatalogue.model.local.Films
+import com.the_b.moviecatalogue.utilities.getLocale
+import com.the_b.moviecatalogue.data.model.DescFilmModel
+import com.the_b.moviecatalogue.data.model.FilmModel
+import com.the_b.moviecatalogue.data.model.local.Films
 import com.the_b.moviecatalogue.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc.*
 import kotlinx.android.synthetic.main.overview_layout.*
@@ -72,13 +72,13 @@ class DescActivity : AppCompatActivity(){
         call.enqueue(object : Callback<DescFilmModel>{
             override fun onFailure(call: Call<DescFilmModel>, t: Throwable) {
                 showLoading(false)
-                Log.d(com.the_b.moviecatalogue.TAG, "error ---> ${t.message}")
+                Log.d(com.the_b.moviecatalogue.utilities.TAG, "error ---> ${t.message}")
             }
 
             override fun onResponse(call: Call<DescFilmModel>, response: Response<DescFilmModel>) {
                 showLoading(false)
                 val data = response.body() as DescFilmModel
-                Log.d(com.the_b.moviecatalogue.TAG, "response ----> $data")
+                Log.d(com.the_b.moviecatalogue.utilities.TAG, "response ----> $data")
                 viewModel.setDetailsFilm(data)
 
                 details = DescFilmModel(

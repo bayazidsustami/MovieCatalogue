@@ -14,10 +14,10 @@ import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.db.DatabaseContract
 import com.the_b.moviecatalogue.db.TvShowHelper
-import com.the_b.moviecatalogue.getLocale
-import com.the_b.moviecatalogue.model.DescTvModel
-import com.the_b.moviecatalogue.model.TvShowModel
-import com.the_b.moviecatalogue.model.local.TvShows
+import com.the_b.moviecatalogue.utilities.getLocale
+import com.the_b.moviecatalogue.data.model.DescTvModel
+import com.the_b.moviecatalogue.data.model.TvShowModel
+import com.the_b.moviecatalogue.data.model.local.TvShows
 import kotlinx.android.synthetic.main.activity_desc_tv.*
 import kotlinx.android.synthetic.main.overview_layout.*
 import retrofit2.Call
@@ -69,7 +69,7 @@ class DescTvActivity : AppCompatActivity() {
         call.enqueue(object : Callback<DescTvModel>{
             override fun onFailure(call: Call<DescTvModel>, t: Throwable) {
                 showLoading(false)
-                Log.d(com.the_b.moviecatalogue.TAG, "error ---> ${t.message}")
+                Log.d(com.the_b.moviecatalogue.utilities.TAG, "error ---> ${t.message}")
             }
 
             override fun onResponse(call: Call<DescTvModel>, response: Response<DescTvModel>) {

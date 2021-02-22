@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.model.local
+package com.the_b.moviecatalogue.data.model.local
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

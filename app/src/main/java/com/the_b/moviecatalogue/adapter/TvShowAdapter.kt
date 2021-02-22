@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
-import com.the_b.moviecatalogue.model.TvShowModel
+import com.the_b.moviecatalogue.data.model.TvShowModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView.Adapter<TvShowAdapter.ViewHolder>(){

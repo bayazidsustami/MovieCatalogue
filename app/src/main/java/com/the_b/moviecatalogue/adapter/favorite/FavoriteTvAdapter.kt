@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.favorites.details.DescFavTv
-import com.the_b.moviecatalogue.model.local.TvShows
+import com.the_b.moviecatalogue.data.model.local.TvShows
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class FavoriteTvAdapter(private val activity: Activity): RecyclerView.Adapter<FavoriteTvAdapter.ViewHolder>() {
