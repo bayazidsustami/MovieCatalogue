@@ -69,8 +69,8 @@ class SearchActivity : AppCompatActivity() {
                     resources.getString(R.string.tab_1) -> {
                         viewModel.getSearchFilm().observe(this@SearchActivity, Observer {
                             if (it != null){
-                                filmAdapter.setData(it.results)
-                                if (it.results.isEmpty()){
+                                filmAdapter.setData(it.data?.results!!)
+                                if (it.data.results.isEmpty()){
                                     Toast.makeText(applicationContext, "Not Found Films", Toast.LENGTH_SHORT).show()
                                     showLoading(false)
                                 } else {
@@ -96,8 +96,8 @@ class SearchActivity : AppCompatActivity() {
                     resources.getString(R.string.tab_2) -> {
                         viewModel.getSearchTv().observe(this@SearchActivity, Observer {
                             if (it != null){
-                                tvShowAdapter.setData(it.results)
-                                if (it.results.isEmpty()){
+                                tvShowAdapter.setData(it.data?.results!!)
+                                if (it.data.results.isEmpty()){
                                     Toast.makeText(applicationContext, "Not Found Tv Show", Toast.LENGTH_SHORT).show()
                                     showLoading(false)
                                 } else {

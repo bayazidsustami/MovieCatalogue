@@ -16,6 +16,6 @@ class DiscoverRepository private constructor()
     }
 
     companion object{
-        val instance by lazy { DiscoverRepository }
+        val instance by lazy { DiscoverRepository() }
     }
 }

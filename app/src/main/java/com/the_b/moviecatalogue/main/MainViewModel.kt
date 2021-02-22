@@ -1,81 +1,75 @@
 package com.the_b.moviecatalogue.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.the_b.moviecatalogue.utilities.TAG
-import com.the_b.moviecatalogue.api.ApiBuilder
-import com.the_b.moviecatalogue.api.ApiService
-import com.the_b.moviecatalogue.utilities.getLocale
+import androidx.lifecycle.viewModelScope
 import com.the_b.moviecatalogue.data.model.FilmModelResponse
 import com.the_b.moviecatalogue.data.model.TvShowModelResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.the_b.moviecatalogue.data.repositories.discover.DiscoverRepository
+import com.the_b.moviecatalogue.utilities.Resource
+import com.the_b.moviecatalogue.utilities.getLocale
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
-class MainViewModel: ViewModel() {
+class MainViewModel(private val repository: DiscoverRepository): ViewModel() {
 
-    private var listFilm = MutableLiveData<FilmModelResponse>()
-    private var listTvShow = MutableLiveData<TvShowModelResponse>()
+    private var listFilm = MutableLiveData<Resource<FilmModelResponse>>()
+    private var listTvShow = MutableLiveData<Resource<TvShowModelResponse>>()
 
     fun setFilm(){
-
+        viewModelScope.launch {
+            repository.getFilms(getLocale())
+                ?.onStart {
+                    listFilm.postValue(Resource.loading(data = null))
+                }
+                ?.catch {
+                    listFilm.postValue(Resource.failed(data = null, message = "Error"))
+                }
+                ?.collect {
+                    listFilm.postValue(Resource.success(data = it))
+                }
+        }
     }
 
     fun setTvShow(){
-
+        viewModelScope.launch {
+            repository.getTvShows(getLocale())
+                ?.onStart {
+                    listTvShow.postValue(Resource.loading(data = null))
+                }
+                ?.catch {
+                    listTvShow.postValue(Resource.failed(data = null, message = "Error"))
+                }
+                ?.collect {
+                    listTvShow.postValue(Resource.success(data = it))
+                }
+        }
     }
 
     fun setSearchFilm(query: String){
-        val apiService = ApiBuilder.createService(ApiService::class.java)
-        val call = apiService.searchFilm(query, getLocale())
-        call.enqueue(object : Callback<FilmModelResponse>{
-            override fun onFailure(call: Call<FilmModelResponse>, t: Throwable) {
-                Log.d(TAG, "Response ---> ${t.message}")
-            }
 
-            override fun onResponse(
-                call: Call<FilmModelResponse>,
-                response: Response<FilmModelResponse>
-            ) {
-                val data = response.body()
-                listFilm.postValue(data)
-            }
-        })
     }
 
     fun setSearchTv(query: String){
-        val apiService = ApiBuilder.createService(ApiService::class.java)
-        val call = apiService.searchTv(query, getLocale())
-        call.enqueue(object : Callback<TvShowModelResponse>{
-            override fun onFailure(call: Call<TvShowModelResponse>, t: Throwable) {
-                Log.d(TAG, "Response ----> ${t.message}")
-            }
 
-            override fun onResponse(
-                call: Call<TvShowModelResponse>,
-                response: Response<TvShowModelResponse>
-            ) {
-                val data = response.body()
-                listTvShow.postValue(data)
-            }
-        })
     }
 
-    fun getFilms(): LiveData<FilmModelResponse>{
+    fun getFilms(): LiveData<Resource<FilmModelResponse>>{
         return listFilm
     }
 
-    fun getTvShow(): LiveData<TvShowModelResponse>{
+    fun getTvShow(): LiveData<Resource<TvShowModelResponse>>{
         return listTvShow
     }
 
-    fun getSearchFilm(): LiveData<FilmModelResponse>{
+    fun getSearchFilm(): LiveData<Resource<FilmModelResponse>>{
         return listFilm
     }
 
-    fun getSearchTv(): LiveData<TvShowModelResponse>{
+    fun getSearchTv(): LiveData<Resource<TvShowModelResponse>>{
         return listTvShow
     }
 }

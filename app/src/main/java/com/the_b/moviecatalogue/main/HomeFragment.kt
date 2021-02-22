@@ -7,16 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
-import com.the_b.moviecatalogue.details.DescActivity
-import com.the_b.moviecatalogue.details.DescTvActivity
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.TvShowModel
+import com.the_b.moviecatalogue.data.repositories.discover.DiscoverRepository
+import com.the_b.moviecatalogue.details.DescActivity
+import com.the_b.moviecatalogue.details.DescTvActivity
+import com.the_b.moviecatalogue.utilities.Status
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -57,24 +58,48 @@ class HomeFragment : Fragment() {
         list_film.adapter = filmAdapter
         list_film.layoutManager = GridLayoutManager(context, 2)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
 
-        viewModel.getFilms().observe(viewLifecycleOwner, Observer {
+        val factory = MainVMFactory(DiscoverRepository.instance)
+        viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
+
+        viewModel.getFilms().observe(viewLifecycleOwner, {
             if (it != null){
-                filmAdapter.setData(it.results)
-                showLoading(false)
+                when(it.status){
+                    Status.LOADING -> {
+                        showLoading(true)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
+                        Log.d("FILMS", it.message!!)
+                    }
+                    Status.SUCCESS -> {
+                        showLoading(false)
+                        it.data?.results?.let { data -> filmAdapter.setData(data) }
+                    }
+                }
             }
         })
 
-        viewModel.getTvShow().observe(viewLifecycleOwner, Observer {
+        viewModel.getTvShow().observe(viewLifecycleOwner, {
             if (it != null){
                 list_film.adapter = tvShowAdapter
-                tvShowAdapter.setData(it.results)
-                showLoading(false)
+                when(it.status){
+                    Status.LOADING -> {
+                        showLoading(true)
+                    }
+                    Status.ERROR -> {
+                        showLoading(false)
+                        Log.d("FILMS", it.message!!)
+                    }
+                    Status.SUCCESS -> {
+                        showLoading(false)
+                        it.data?.results?.let { data -> tvShowAdapter.setData(data) }
+                    }
+                }
             }
         })
 
-        var index = 0
+        val index: Int
         if (arguments != null){
             index = arguments?.getInt(INDEX, 0) as Int
             if (index == 1){
@@ -103,12 +128,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadDataFilm(){
-        showLoading(true)
         viewModel.setFilm()
     }
 
     private fun loadDataTv(){
-        showLoading(true)
         viewModel.setTvShow()
     }
 
