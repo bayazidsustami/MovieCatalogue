@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.db
+package com.the_b.moviecatalogue.data.db
 
 import android.net.Uri
 import android.provider.BaseColumns

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.main
+package com.the_b.moviecatalogue.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

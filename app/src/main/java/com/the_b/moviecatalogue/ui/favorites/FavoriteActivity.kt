@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.favorites
+package com.the_b.moviecatalogue.ui.favorites
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

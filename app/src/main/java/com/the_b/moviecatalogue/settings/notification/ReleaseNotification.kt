@@ -15,8 +15,8 @@ import androidx.core.content.ContextCompat
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
-import com.the_b.moviecatalogue.details.DescActivity
-import com.the_b.moviecatalogue.main.MainActivity
+import com.the_b.moviecatalogue.ui.details.DescActivity
+import com.the_b.moviecatalogue.ui.main.MainActivity
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.FilmModelResponse
 import retrofit2.Call

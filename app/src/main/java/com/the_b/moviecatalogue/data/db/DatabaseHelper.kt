@@ -1,10 +1,10 @@
-package com.the_b.moviecatalogue.db
+package com.the_b.moviecatalogue.data.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
-import com.the_b.moviecatalogue.db.DatabaseContract.TvShowColumn.Companion.TABLE_TV
+import com.the_b.moviecatalogue.data.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
+import com.the_b.moviecatalogue.data.db.DatabaseContract.TvShowColumn.Companion.TABLE_TV
 
 internal class DatabaseHelper(context: Context)
     : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.details
+package com.the_b.moviecatalogue.ui.details
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
-import com.the_b.moviecatalogue.db.DatabaseContract
-import com.the_b.moviecatalogue.db.FilmHelper
+import com.the_b.moviecatalogue.data.db.DatabaseContract
+import com.the_b.moviecatalogue.data.db.FilmHelper
 import com.the_b.moviecatalogue.utilities.getLocale
 import com.the_b.moviecatalogue.data.model.DescFilmModel
 import com.the_b.moviecatalogue.data.model.FilmModel

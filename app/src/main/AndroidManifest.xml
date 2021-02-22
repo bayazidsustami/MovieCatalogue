@@ -31,7 +31,7 @@
         </receiver>
 
         <provider
-            android:name=".db.provider.DatabaseProvider"
+            android:name="com.the_b.moviecatalogue.data.db.provider.DatabaseProvider"
             android:authorities="com.theb.moviecatalogue"
             android:exported="true"
             android:readPermission="com.theb.moviecatalogue.READ_DATABASE"
@@ -47,14 +47,14 @@
             android:exported="true" />
 
         <activity android:name=".settings.SettingActivity" />
-        <activity android:name=".search.SearchActivity"/>
-        <activity android:name=".favorites.details.DescFavTv" />
-        <activity android:name=".favorites.details.DescFavFilm" />
-        <activity android:name=".favorites.FavoriteActivity"
-            android:parentActivityName=".main.MainActivity"/>
-        <activity android:name=".details.DescTvActivity" />
-        <activity android:name=".details.DescActivity" />
-        <activity android:name=".main.MainActivity">
+        <activity android:name="com.the_b.moviecatalogue.ui.search.SearchActivity"/>
+        <activity android:name="com.the_b.moviecatalogue.ui.favorites.details.DescFavTv" />
+        <activity android:name="com.the_b.moviecatalogue.ui.favorites.details.DescFavFilm" />
+        <activity android:name="com.the_b.moviecatalogue.ui.favorites.FavoriteActivity"
+            android:parentActivityName="com.the_b.moviecatalogue.ui.main.MainActivity"/>
+        <activity android:name="com.the_b.moviecatalogue.ui.details.DescTvActivity" />
+        <activity android:name="com.the_b.moviecatalogue.ui.details.DescActivity" />
+        <activity android:name="com.the_b.moviecatalogue.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

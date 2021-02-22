@@ -1,7 +1,7 @@
-package com.the_b.moviecatalogue.helper
+package com.the_b.moviecatalogue.data.db.helper
 
 import android.database.Cursor
-import com.the_b.moviecatalogue.db.DatabaseContract
+import com.the_b.moviecatalogue.data.db.DatabaseContract
 import com.the_b.moviecatalogue.data.model.local.TvShows
 
 object MappingTvShowHelper {

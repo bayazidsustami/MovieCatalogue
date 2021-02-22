@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.search
+package com.the_b.moviecatalogue.ui.search
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
-import com.the_b.moviecatalogue.details.DescActivity
-import com.the_b.moviecatalogue.details.DescTvActivity
-import com.the_b.moviecatalogue.main.MainViewModel
+import com.the_b.moviecatalogue.ui.details.DescActivity
+import com.the_b.moviecatalogue.ui.details.DescTvActivity
+import com.the_b.moviecatalogue.ui.main.MainViewModel
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.TvShowModel
 import kotlinx.android.synthetic.main.activity_search.*

@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".favorites.details.DescFavFilm">
+        tools:context=".ui.favorites.details.DescFavFilm">
 
         <ImageView
             android:id="@+id/imageFilm"

@@ -9,7 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.favorites.FavoriteActivity
+import com.the_b.moviecatalogue.ui.favorites.FavoriteActivity
 
 /**
  * Implementation of App Widget functionality.

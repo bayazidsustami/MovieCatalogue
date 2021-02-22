@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.main
+package com.the_b.moviecatalogue.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,8 +15,8 @@ import com.the_b.moviecatalogue.adapter.TvShowAdapter
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.TvShowModel
 import com.the_b.moviecatalogue.data.repositories.discover.DiscoverRepository
-import com.the_b.moviecatalogue.details.DescActivity
-import com.the_b.moviecatalogue.details.DescTvActivity
+import com.the_b.moviecatalogue.ui.details.DescActivity
+import com.the_b.moviecatalogue.ui.details.DescTvActivity
 import com.the_b.moviecatalogue.utilities.Status
 import kotlinx.android.synthetic.main.fragment_home.*
 

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.favorites.details
+package com.the_b.moviecatalogue.ui.favorites.details
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
-import com.the_b.moviecatalogue.db.FilmHelper
+import com.the_b.moviecatalogue.data.db.FilmHelper
 import com.the_b.moviecatalogue.data.model.local.Films
 import com.the_b.moviecatalogue.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc_fav_film.*

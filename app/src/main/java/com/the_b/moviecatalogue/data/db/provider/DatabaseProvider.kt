@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.db.provider
+package com.the_b.moviecatalogue.data.db.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -6,12 +6,12 @@ import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import com.the_b.moviecatalogue.db.DatabaseContract.AUTHORITY
-import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.CONTENT_URI_FILM
-import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
-import com.the_b.moviecatalogue.db.DatabaseContract.TvShowColumn.Companion.TABLE_TV
-import com.the_b.moviecatalogue.db.FilmHelper
-import com.the_b.moviecatalogue.db.TvShowHelper
+import com.the_b.moviecatalogue.data.db.DatabaseContract.AUTHORITY
+import com.the_b.moviecatalogue.data.db.DatabaseContract.FilmColumn.Companion.CONTENT_URI_FILM
+import com.the_b.moviecatalogue.data.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
+import com.the_b.moviecatalogue.data.db.DatabaseContract.TvShowColumn.Companion.TABLE_TV
+import com.the_b.moviecatalogue.data.db.FilmHelper
+import com.the_b.moviecatalogue.data.db.TvShowHelper
 
 class DatabaseProvider : ContentProvider() {
 

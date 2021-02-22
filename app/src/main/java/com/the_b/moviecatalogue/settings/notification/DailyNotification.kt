@@ -12,7 +12,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.main.MainActivity
+import com.the_b.moviecatalogue.ui.main.MainActivity
 import java.util.*
 
 class DailyNotification : BroadcastReceiver() {

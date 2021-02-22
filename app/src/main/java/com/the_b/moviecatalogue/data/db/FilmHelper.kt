@@ -1,11 +1,11 @@
-package com.the_b.moviecatalogue.db
+package com.the_b.moviecatalogue.data.db
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
-import com.the_b.moviecatalogue.db.DatabaseContract.FilmColumn.Companion._ID
+import com.the_b.moviecatalogue.data.db.DatabaseContract.FilmColumn.Companion.TABLE_FILM
+import com.the_b.moviecatalogue.data.db.DatabaseContract.FilmColumn.Companion._ID
 import java.sql.SQLException
 
 class FilmHelper(context: Context) {

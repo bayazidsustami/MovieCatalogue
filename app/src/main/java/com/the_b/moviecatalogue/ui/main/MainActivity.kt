@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.main
+package com.the_b.moviecatalogue.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
-import com.the_b.moviecatalogue.favorites.FavoriteActivity
-import com.the_b.moviecatalogue.search.SearchActivity
+import com.the_b.moviecatalogue.ui.favorites.FavoriteActivity
+import com.the_b.moviecatalogue.ui.search.SearchActivity
 import com.the_b.moviecatalogue.settings.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 

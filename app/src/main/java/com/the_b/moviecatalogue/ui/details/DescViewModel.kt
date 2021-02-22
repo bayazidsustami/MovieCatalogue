@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.details
+package com.the_b.moviecatalogue.ui.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
