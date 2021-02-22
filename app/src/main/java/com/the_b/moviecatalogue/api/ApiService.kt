@@ -13,12 +13,14 @@ interface ApiService {
 
     @GET("discover/movie")
     suspend fun loadFilm(
-        @Query("language") language: String = "en-US"
+        @Query("language") language: String = "en-US",
+        @Query("page") page: Int = 1
     ): FilmModelResponse
 
     @GET("discover/tv")
     suspend fun loadTvShow(
-        @Query("language") language: String = "en-US"
+        @Query("language") language: String = "en-US",
+        @Query("page") page: Int = 1
     ): TvShowModelResponse
 
     @GET("movie/{id}")
