@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.settings
+package com.the_b.moviecatalogue.ui.features.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -6,8 +6,8 @@ import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.settings.notification.DailyNotification
-import com.the_b.moviecatalogue.settings.notification.ReleaseNotification
+import com.the_b.moviecatalogue.ui.features.settings.notification.DailyNotification
+import com.the_b.moviecatalogue.ui.features.settings.notification.ReleaseNotification
 
 class MyPreference: PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener,

@@ -10,7 +10,7 @@ import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
 import com.the_b.moviecatalogue.ui.favorites.FavoriteActivity
 import com.the_b.moviecatalogue.ui.search.SearchActivity
-import com.the_b.moviecatalogue.settings.SettingActivity
+import com.the_b.moviecatalogue.ui.features.settings.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.settings
+package com.the_b.moviecatalogue.ui.features.settings
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.widget
+package com.the_b.moviecatalogue.ui.features.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager

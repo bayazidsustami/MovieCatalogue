@@ -18,7 +18,7 @@ import com.the_b.moviecatalogue.utilities.getLocale
 import com.the_b.moviecatalogue.data.model.DescFilmModel
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.local.Films
-import com.the_b.moviecatalogue.widget.FavoriteWidget
+import com.the_b.moviecatalogue.ui.features.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc.*
 import kotlinx.android.synthetic.main.overview_layout.*
 import retrofit2.Call

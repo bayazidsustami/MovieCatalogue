@@ -12,7 +12,7 @@ import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.data.db.FilmHelper
 import com.the_b.moviecatalogue.data.model.local.Films
-import com.the_b.moviecatalogue.widget.FavoriteWidget
+import com.the_b.moviecatalogue.ui.features.widget.FavoriteWidget
 import kotlinx.android.synthetic.main.activity_desc_fav_film.*
 import kotlinx.android.synthetic.main.overview_layout.*
 

@@ -1,4 +1,4 @@
-package com.the_b.moviecatalogue.settings.notification
+package com.the_b.moviecatalogue.ui.features.settings.notification
 
 import android.app.AlarmManager
 import android.app.NotificationChannel

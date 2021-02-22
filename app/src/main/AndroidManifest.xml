@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name=".widget.FavoriteWidget">
+        <receiver android:name="com.the_b.moviecatalogue.ui.features.widget.FavoriteWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -38,15 +38,15 @@
             android:writePermission="com.theb.moviecatalogue.WRITE_DATABASE" />
 
         <receiver
-            android:name=".settings.notification.ReleaseNotification"
+            android:name="com.the_b.moviecatalogue.ui.features.settings.notification.ReleaseNotification"
             android:enabled="true"
             android:exported="true" />
         <receiver
-            android:name=".settings.notification.DailyNotification"
+            android:name="com.the_b.moviecatalogue.ui.features.settings.notification.DailyNotification"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".settings.SettingActivity" />
+        <activity android:name="com.the_b.moviecatalogue.ui.features.settings.SettingActivity" />
         <activity android:name="com.the_b.moviecatalogue.ui.search.SearchActivity"/>
         <activity android:name="com.the_b.moviecatalogue.ui.favorites.details.DescFavTv" />
         <activity android:name="com.the_b.moviecatalogue.ui.favorites.details.DescFavFilm" />
@@ -63,7 +63,7 @@
         </activity>
 
         <service
-            android:name=".widget.StackWidgetService"
+            android:name="com.the_b.moviecatalogue.ui.features.widget.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 
