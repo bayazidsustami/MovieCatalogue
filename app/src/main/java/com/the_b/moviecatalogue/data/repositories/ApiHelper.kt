@@ -9,4 +9,9 @@ interface ApiHelper {
         suspend fun getListFilm(language: String = "en-US"): Flow<FilmModelResponse>
         suspend fun getListTvShow(language: String = "en-US"): Flow<TvShowModelResponse>
     }
+
+    interface Search{
+        suspend fun searchFilm(query: String, language: String = "en-US"): Flow<FilmModelResponse>
+        suspend fun searchTvShow(query: String, language: String = "en-US"): Flow<TvShowModelResponse>
+    }
 }

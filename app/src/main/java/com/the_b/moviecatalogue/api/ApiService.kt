@@ -34,16 +34,16 @@ interface ApiService {
     ): Call<DescTvModel>
 
     @GET("search/movie")
-    fun searchFilm(
+    suspend fun searchFilm(
         @Query("query") query: String,
         @Query("language") language: String
-    ): Call<FilmModelResponse>
+    ): FilmModelResponse
 
     @GET("search/tv")
-    fun searchTv(
+    suspend fun searchTv(
         @Query("query") query: String,
         @Query("language") language: String
-    ): Call<TvShowModelResponse>
+    ): TvShowModelResponse
 
     @GET("discover/movie")
     fun releaseFilm(
