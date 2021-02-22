@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.details.DescActivity
 import com.the_b.moviecatalogue.main.MainActivity
@@ -48,7 +48,7 @@ class ReleaseNotification : BroadcastReceiver() {
         val date = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = dateFormat.format(date)
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         val call = apiService.releaseFilm(currentDate, currentDate)
         call.enqueue(object : Callback<FilmModelResponse>{
             override fun onFailure(call: Call<FilmModelResponse>, t: Throwable) {

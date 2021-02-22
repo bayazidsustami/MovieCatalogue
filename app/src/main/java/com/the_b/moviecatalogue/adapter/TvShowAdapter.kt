@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.model.TvShowModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
@@ -27,7 +27,7 @@ class TvShowAdapter (private val listTv: MutableList<TvShowModel>): RecyclerView
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)  {
         fun bind(itemTv: TvShowModel){
             with(itemView){
-                Glide.with(context).load(ApiRepository.IMAGE_URL+itemTv.poster_path).into(itemView.imgFilm)
+                Glide.with(context).load(ApiBuilder.IMAGE_URL+itemTv.poster_path).into(itemView.imgFilm)
                 itemView.titleFilm.text = itemTv.name
 
                 itemView.setOnClickListener {

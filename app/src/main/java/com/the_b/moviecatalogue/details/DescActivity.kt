@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.db.DatabaseContract
 import com.the_b.moviecatalogue.db.FilmHelper
@@ -46,7 +46,7 @@ class DescActivity : AppCompatActivity(){
         filmHelper = FilmHelper.getInstance(applicationContext)
         filmHelper.open()
 
-        val films = intent.getParcelableExtra(EXTRA_DATA) as FilmModel
+        val films = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
 
         val actionBar = supportActionBar
         actionBar!!.title = films.title
@@ -60,7 +60,7 @@ class DescActivity : AppCompatActivity(){
             }
         })
 
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         call = apiService.loadDetailFilm(films.id.toString(), getLocale())
 
         showLoading(true)
@@ -139,7 +139,7 @@ class DescActivity : AppCompatActivity(){
         status.text = film.status
         voteLabel.text = film.voteAverage
         releaseFilm.text = film.date
-        Glide.with(this).load(ApiRepository.IMAGE_URL+film.imageFilm).into(imageFilm)
+        Glide.with(this).load(ApiBuilder.IMAGE_URL+film.imageFilm).into(imageFilm)
     }
 
     override fun onSupportNavigateUp(): Boolean {

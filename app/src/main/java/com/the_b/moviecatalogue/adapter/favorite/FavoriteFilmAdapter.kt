@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.favorites.details.DescFavFilm
 import com.the_b.moviecatalogue.model.local.Films
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -39,7 +39,7 @@ class FavoriteFilmAdapter(private val activity: Activity): RecyclerView.Adapter<
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(filmsItem: Films){
             with(itemView){
-                Glide.with(context).load(ApiRepository.IMAGE_URL+filmsItem.photo).into(itemView.imgFilm)
+                Glide.with(context).load(ApiBuilder.IMAGE_URL+filmsItem.photo).into(itemView.imgFilm)
                 itemView.titleFilm.text = filmsItem.title
 
                 itemView.setOnClickListener(CustomClickListener(adapterPosition, object : CustomClickListener.OnItemClickCallback{

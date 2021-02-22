@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiRepository {
+object ApiBuilder {
 
     const val IMAGE_URL = "https://image.tmdb.org/t/p/w154"
 

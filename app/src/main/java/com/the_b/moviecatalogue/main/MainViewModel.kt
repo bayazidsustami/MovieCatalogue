@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.the_b.moviecatalogue.TAG
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.getLocale
 import com.the_b.moviecatalogue.model.FilmModelResponse
@@ -20,7 +20,7 @@ class MainViewModel: ViewModel() {
     private var listTvShow = MutableLiveData<TvShowModelResponse>()
 
     fun setFilm(){
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         val call = apiService.loadFilm(getLocale())
         call.enqueue(object : Callback<FilmModelResponse>{
             override fun onFailure(call: Call<FilmModelResponse>, t: Throwable) {
@@ -38,7 +38,7 @@ class MainViewModel: ViewModel() {
     }
 
     fun setTvShow(){
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         val call = apiService.loadTvShow(getLocale())
         call.enqueue(object : Callback<TvShowModelResponse>{
             override fun onFailure(call: Call<TvShowModelResponse>, t: Throwable) {
@@ -59,7 +59,7 @@ class MainViewModel: ViewModel() {
     }
 
     fun setSearchFilm(query: String){
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         val call = apiService.searchFilm(query, getLocale())
         call.enqueue(object : Callback<FilmModelResponse>{
             override fun onFailure(call: Call<FilmModelResponse>, t: Throwable) {
@@ -77,7 +77,7 @@ class MainViewModel: ViewModel() {
     }
 
     fun setSearchTv(query: String){
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         val call = apiService.searchTv(query, getLocale())
         call.enqueue(object : Callback<TvShowModelResponse>{
             override fun onFailure(call: Call<TvShowModelResponse>, t: Throwable) {

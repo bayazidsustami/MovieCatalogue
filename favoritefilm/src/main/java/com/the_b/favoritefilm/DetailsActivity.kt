@@ -16,7 +16,7 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-        val films = intent.getParcelableExtra(EXTRA_DATA) as FilmModel
+        val films = intent.getParcelableExtra<FilmModel>(EXTRA_DATA) as FilmModel
 
         supportActionBar?.title = films.title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

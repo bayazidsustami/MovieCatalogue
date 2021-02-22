@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.db.TvShowHelper
 import com.the_b.moviecatalogue.model.local.TvShows
 import kotlinx.android.synthetic.main.activity_desc_fav_tv.*
@@ -42,7 +42,7 @@ class DescFavTv : AppCompatActivity() {
         if (tvShow != null){
             position = intent.getIntExtra(EXTRA_POSITION, 0)
 
-            Glide.with(this).load(ApiRepository.IMAGE_URL+tvShow?.photo).into(imageFilm)
+            Glide.with(this).load(ApiBuilder.IMAGE_URL+tvShow?.photo).into(imageFilm)
             titleFilm.text = tvShow?.title
             releaseFilm.text = tvShow?.date
             popularity.text = tvShow?.episodes

@@ -10,12 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.db.DatabaseContract
 import com.the_b.moviecatalogue.db.TvShowHelper
 import com.the_b.moviecatalogue.getLocale
-import com.the_b.moviecatalogue.main.HomeFragment
 import com.the_b.moviecatalogue.model.DescTvModel
 import com.the_b.moviecatalogue.model.TvShowModel
 import com.the_b.moviecatalogue.model.local.TvShows
@@ -45,7 +44,7 @@ class DescTvActivity : AppCompatActivity() {
         tvHelper = TvShowHelper.getInstance(applicationContext)
         tvHelper.open()
 
-        val tv = intent.getParcelableExtra(EXTRA_DATA) as TvShowModel
+        val tv = intent.getParcelableExtra<TvShowModel>(EXTRA_DATA) as TvShowModel
 
         val actionBar = supportActionBar
         actionBar!!.title = tv.name
@@ -59,7 +58,7 @@ class DescTvActivity : AppCompatActivity() {
             }
         })
 
-        val apiService = ApiRepository.createService(ApiService::class.java)
+        val apiService = ApiBuilder.createService(ApiService::class.java)
         call = apiService.loadDetailTv(tv.id.toString(), getLocale())
         showLoading(true)
 
@@ -134,7 +133,7 @@ class DescTvActivity : AppCompatActivity() {
         status.text = tv.status
         voteLabel.text = tv.voteAverage
         releaseFilm.text = tv.date
-        Glide.with(this).load(ApiRepository.IMAGE_URL+tv.imageTv).into(imageFilm)
+        Glide.with(this).load(ApiBuilder.IMAGE_URL+tv.imageTv).into(imageFilm)
     }
 
     override fun onSupportNavigateUp(): Boolean {

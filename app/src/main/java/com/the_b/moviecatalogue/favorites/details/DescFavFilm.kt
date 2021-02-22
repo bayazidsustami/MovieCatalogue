@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.the_b.moviecatalogue.R
-import com.the_b.moviecatalogue.api.ApiRepository
+import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.db.FilmHelper
 import com.the_b.moviecatalogue.model.local.Films
 import com.the_b.moviecatalogue.widget.FavoriteWidget
@@ -44,7 +44,7 @@ class DescFavFilm : AppCompatActivity() {
             position = intent.getIntExtra(EXTRA_POSITION, 0)
 
             titleFilm.text = film?.title
-            Glide.with(this).load(ApiRepository.IMAGE_URL+film?.photo).into(imageFilm)
+            Glide.with(this).load(ApiBuilder.IMAGE_URL+film?.photo).into(imageFilm)
             releaseFilm.text = film?.date
             popularity.text = film?.popularity
             voteLabel.text = film?.voteAverage
