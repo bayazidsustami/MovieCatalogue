@@ -26,6 +26,8 @@ android {
         buildConfigField "String", "API_KEY", "\"a81e9d88885bc612f8202ca5bf308441\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -39,12 +41,9 @@ android {
         viewBinding = true
     }
 
-}
 
-androidExtensions {
-    experimental = true
-}
 
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -90,4 +89,6 @@ dependencies {
 
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

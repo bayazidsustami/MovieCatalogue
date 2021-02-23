@@ -8,6 +8,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.adapter.DiscoverFilmsPagingAdapter
 import com.the_b.moviecatalogue.adapter.DiscoverTvShowPagingAdapter
+import com.the_b.moviecatalogue.adapter.LoadViewStateAdapter
 import com.the_b.moviecatalogue.data.repositories.discover.DiscoverPagingRepository
 import com.the_b.moviecatalogue.databinding.FragmentHomeBinding
 import com.the_b.moviecatalogue.ui.baseView.BaseFragment
@@ -89,11 +90,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             val index = arguments?.getInt(INDEX)
             Log.d(INDEX, index.toString())
             if (index == 0){
-                binds.listFilm.adapter = filmsPagingAdapter
+                binds.listFilm.adapter = filmsPagingAdapter.withLoadStateFooter(
+                    footer = LoadViewStateAdapter { filmsPagingAdapter.retry() }
+                )
                 loadFilm()
                 collectDataFilm(binds)
             } else if(index == 1){
-                binds.listFilm.adapter = tvShowPagingAdapter
+                binds.listFilm.adapter = tvShowPagingAdapter.withLoadStateFooter(
+                    footer = LoadViewStateAdapter{tvShowPagingAdapter.retry()}
+                )
                 loadTvShow()
                 collectDataTvShow(binds)
             }
