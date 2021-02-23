@@ -1,30 +1,38 @@
 package com.the_b.moviecatalogue.ui.main
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
+import com.the_b.moviecatalogue.adapter.DiscoverFilmsPagingAdapter
 import com.the_b.moviecatalogue.adapter.FilmAdapter
 import com.the_b.moviecatalogue.adapter.TvShowAdapter
+import com.the_b.moviecatalogue.api.ApiBuilder
+import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.TvShowModel
+import com.the_b.moviecatalogue.data.repositories.discover.DiscoverPagingRepository
 import com.the_b.moviecatalogue.data.repositories.discover.DiscoverRepository
-import com.the_b.moviecatalogue.ui.details.DescActivity
-import com.the_b.moviecatalogue.ui.details.DescTvActivity
-import com.the_b.moviecatalogue.utilities.Status
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private lateinit var filmAdapter: FilmAdapter
     private lateinit var tvShowAdapter: TvShowAdapter
     private lateinit var viewModel: MainViewModel
+    private val pagingAdapter = DiscoverFilmsPagingAdapter()
+    private var pagingJob: Job? = null
 
     private var dataFilm = mutableListOf<FilmModel>()
     private var dataTv = mutableListOf<TvShowModel>()
@@ -42,6 +50,15 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun loadFilm(){
+        pagingJob?.cancel()
+        pagingJob = lifecycleScope.launch {
+            viewModel.getListFilmPaging().collect {
+                pagingAdapter.submitData(it)
+            }
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -52,17 +69,23 @@ class HomeFragment : Fragment() {
 
         list_film.setHasFixedSize(true)
 
+
         tvShowAdapter = TvShowAdapter(dataTv)
         filmAdapter = FilmAdapter(dataFilm)
 
-        list_film.adapter = filmAdapter
+        list_film.adapter = pagingAdapter
         list_film.layoutManager = GridLayoutManager(context, 2)
 
 
-        val factory = MainVMFactory(DiscoverRepository.instance)
+        val factory = MainVMFactory(
+            DiscoverRepository.instance,
+            DiscoverPagingRepository(ApiBuilder.createService(ApiService::class.java)))
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
-        viewModel.getFilms().observe(viewLifecycleOwner, {
+        loadFilm()
+        collectData()
+
+        /*viewModel.getFilms().observe(viewLifecycleOwner, {
             if (it != null){
                 when(it.status){
                     Status.LOADING -> {
@@ -78,9 +101,9 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
-        viewModel.getTvShow().observe(viewLifecycleOwner, {
+        /*viewModel.getTvShow().observe(viewLifecycleOwner, {
             if (it != null){
                 list_film.adapter = tvShowAdapter
                 when(it.status){
@@ -97,9 +120,9 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-        })
+        })*/
 
-        val index: Int
+        /*val index: Int
         if (arguments != null){
             index = arguments?.getInt(INDEX, 0) as Int
             if (index == 1){
@@ -116,7 +139,7 @@ class HomeFragment : Fragment() {
             }
             Log.d("index", "index $index")
 
-            loadDataFilm()
+            //loadDataFilm()
             filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
                 override fun onItemClick(data: FilmModel) {
                     val intent = Intent(context, DescActivity::class.java)
@@ -124,7 +147,7 @@ class HomeFragment : Fragment() {
                     startActivity(intent)
                 }
             })
-        }
+        }*/
     }
 
     private fun loadDataFilm(){
@@ -142,6 +165,15 @@ class HomeFragment : Fragment() {
            }else {
                progressBar.visibility = View.GONE
            }
+        }
+    }
+
+    private fun collectData(){
+        lifecycleScope.launch {
+            pagingAdapter.loadStateFlow
+                .distinctUntilChangedBy { it.refresh }
+                .filter { it.refresh is LoadState.NotLoading}
+                .collect { list_film.scrollToPosition(0) }
         }
     }
 }

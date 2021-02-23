@@ -10,14 +10,14 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class DiscoverImpl(private val apiService: ApiService): ApiHelper.Discover {
-    override suspend fun getListFilm(language: String): Flow<FilmModelResponse> {
+    override suspend fun getListFilm(language: String, page: Int): Flow<FilmModelResponse> {
         return flow {
             val discovers = apiService.loadFilm(language)
             emit(discovers)
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun getListTvShow(language: String): Flow<TvShowModelResponse> {
+    override suspend fun getListTvShow(language: String, page: Int): Flow<TvShowModelResponse> {
         return flow {
             val discovers = apiService.loadTvShow(language)
             emit(discovers)

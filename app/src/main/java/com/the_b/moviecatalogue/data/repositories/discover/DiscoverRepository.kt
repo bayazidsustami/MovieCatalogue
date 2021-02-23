@@ -7,12 +7,12 @@ import kotlinx.coroutines.flow.Flow
 
 class DiscoverRepository private constructor()
     : BaseRepositories<DiscoverImpl>(){
-    suspend fun getFilms(language: String = "en-US"): Flow<FilmModelResponse>? {
-        return remoteDataSource?.getListFilm(language)
+    suspend fun getFilms(language: String = "en-US", page: Int = 1): Flow<FilmModelResponse>? {
+        return remoteDataSource?.getListFilm(language, page)
     }
 
-    suspend fun getTvShows(language: String = "en-US"): Flow<TvShowModelResponse>?{
-        return remoteDataSource?.getListTvShow(language)
+    suspend fun getTvShows(language: String = "en-US", page: Int = 1): Flow<TvShowModelResponse>?{
+        return remoteDataSource?.getListTvShow(language, page)
     }
 
     companion object{

@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface ApiHelper {
     interface Discover{
-        suspend fun getListFilm(language: String = "en-US"): Flow<FilmModelResponse>
-        suspend fun getListTvShow(language: String = "en-US"): Flow<TvShowModelResponse>
+        suspend fun getListFilm(language: String = "en-US", page: Int): Flow<FilmModelResponse>
+        suspend fun getListTvShow(language: String = "en-US", page: Int): Flow<TvShowModelResponse>
     }
 
     interface Search{

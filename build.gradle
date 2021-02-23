@@ -13,7 +13,7 @@ buildscript {
 
         retrofit_version = "2.9.0"
         moshi_version = "2.4.0"
-        gson_version = "2.7.1"
+        gson_version = "2.7.2"
         okhttp_version = "4.8.1"
         glide_version = "4.11.0"
         coroutine_version = "1.4.1"
@@ -26,7 +26,7 @@ buildscript {
 
         preference_version = "1.1.1"
 
-        paging_version = "2.1.2"
+        paging_version = "3.0.0-beta01"
     }
     repositories {
         google()
