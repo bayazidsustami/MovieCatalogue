@@ -4,6 +4,7 @@ import android.app.Application
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
 import com.the_b.moviecatalogue.data.repositories.discover.DiscoverImpl
+import com.the_b.moviecatalogue.data.repositories.discover.DiscoverPagingRepository
 import com.the_b.moviecatalogue.data.repositories.discover.DiscoverRepository
 
 class MovieCatalogueApplication: Application() {

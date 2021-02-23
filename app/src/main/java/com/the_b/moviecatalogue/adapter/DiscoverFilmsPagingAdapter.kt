@@ -26,7 +26,7 @@ class DiscoverFilmsPagingAdapter: PagingDataAdapter<FilmModel, DiscoverFilmsPagi
         return FilmViewHolder(view)
     }
 
-    class FilmViewHolder(private val binding: ListItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class FilmViewHolder(private val binding: ListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(film: FilmModel){
             binding.titleFilm.text = film.title
             Glide.with(binding.root)
