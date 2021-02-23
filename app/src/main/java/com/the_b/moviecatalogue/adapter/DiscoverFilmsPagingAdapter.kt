@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.databinding.ListItemBinding
@@ -30,6 +31,7 @@ class DiscoverFilmsPagingAdapter: PagingDataAdapter<FilmModel, DiscoverFilmsPagi
             binding.titleFilm.text = film.title
             Glide.with(binding.root)
                 .load(ApiBuilder.IMAGE_URL+film.poster_path)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(binding.imgFilm)
         }
     }
