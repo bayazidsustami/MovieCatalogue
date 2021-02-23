@@ -2,6 +2,8 @@ package com.the_b.moviecatalogue.ui.main
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -76,6 +78,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     override fun setupView(binds: FragmentHomeBinding?) {
+
         with(binds?.listFilm!!){
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 2)
@@ -90,17 +93,53 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             val index = arguments?.getInt(INDEX)
             Log.d(INDEX, index.toString())
             if (index == 0){
-                binds.listFilm.adapter = filmsPagingAdapter.withLoadStateFooter(
-                    footer = LoadViewStateAdapter { filmsPagingAdapter.retry() }
-                )
-                loadFilm()
-                collectDataFilm(binds)
+                initAdapterFilm(binds)
             } else if(index == 1){
-                binds.listFilm.adapter = tvShowPagingAdapter.withLoadStateFooter(
-                    footer = LoadViewStateAdapter{tvShowPagingAdapter.retry()}
-                )
-                loadTvShow()
-                collectDataTvShow(binds)
+                initAdapterTv(binds)
+            }
+        }
+    }
+
+    private fun initAdapterFilm(binds: FragmentHomeBinding){
+        binds.listFilm.adapter = filmsPagingAdapter.withLoadStateFooter(
+            footer = LoadViewStateAdapter { filmsPagingAdapter.retry() }
+        )
+        loadFilm()
+        collectDataFilm(binds)
+        binds.retryButton.setOnClickListener { filmsPagingAdapter.retry() }
+        filmsPagingAdapter.addLoadStateListener {loadState ->
+            binds.listFilm.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binds.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binds.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+            val errorState = loadState.source.append as? LoadState.Error
+                ?:loadState.source.prepend as? LoadState.Error
+                ?:loadState.append as? LoadState.Error
+                ?:loadState.prepend as? LoadState.Error
+            errorState?.let {
+                Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops ${it.error}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun initAdapterTv(binds: FragmentHomeBinding){
+        binds.listFilm.adapter = tvShowPagingAdapter.withLoadStateFooter(
+            footer = LoadViewStateAdapter{tvShowPagingAdapter.retry()}
+        )
+        loadTvShow()
+        collectDataTvShow(binds)
+        binds.retryButton.setOnClickListener { tvShowPagingAdapter.retry() }
+        tvShowPagingAdapter.addLoadStateListener {loadState ->
+            binds.listFilm.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binds.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binds.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+            val errorState = loadState.source.append as? LoadState.Error
+                ?:loadState.source.prepend as? LoadState.Error
+                ?:loadState.append as? LoadState.Error
+                ?:loadState.prepend as? LoadState.Error
+            errorState?.let {
+                Toast.makeText(requireContext(), "\uD83D\uDE28 Wooops ${it.error}", Toast.LENGTH_SHORT).show()
             }
         }
     }
