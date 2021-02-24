@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.FilmAdapter
@@ -23,6 +24,7 @@ import com.the_b.moviecatalogue.data.model.FilmModel
 import com.the_b.moviecatalogue.data.model.TvShowModel
 import kotlinx.android.synthetic.main.activity_search.*
 
+@ExperimentalPagingApi
 class SearchActivity : AppCompatActivity() {
 
     companion object{
@@ -67,58 +69,11 @@ class SearchActivity : AppCompatActivity() {
                 when(spinner.selectedItem.toString()){
 
                     resources.getString(R.string.tab_1) -> {
-                        viewModel.getSearchFilm().observe(this@SearchActivity, Observer {
-                            if (it != null){
-                                filmAdapter.setData(it.data?.results!!)
-                                if (it.data.results.isEmpty()){
-                                    Toast.makeText(applicationContext, "Not Found Films", Toast.LENGTH_SHORT).show()
-                                    showLoading(false)
-                                } else {
-                                    showLoading(false)
-                                }
-                            }
-                        })
-                        Log.d("SPINERR ITEM", "FILM SEARCH")
 
-                        listSearch.apply {
-                            adapter = filmAdapter
-                        }
-
-                        filmAdapter.setOnItemClickCallback(object : FilmAdapter.OnItemClickCallback{
-                            override fun onItemClick(data: FilmModel) {
-                                val intent = Intent(this@SearchActivity, DescActivity::class.java)
-                                intent.putExtra(DescActivity.EXTRA_DATA, data)
-                                startActivity(intent)
-                            }
-                        })
                     }
 
                     resources.getString(R.string.tab_2) -> {
-                        viewModel.getSearchTv().observe(this@SearchActivity, Observer {
-                            if (it != null){
-                                tvShowAdapter.setData(it.data?.results!!)
-                                if (it.data.results.isEmpty()){
-                                    Toast.makeText(applicationContext, "Not Found Tv Show", Toast.LENGTH_SHORT).show()
-                                    showLoading(false)
-                                } else {
-                                    showLoading(false)
-                                }
-                            }
-                        })
-                        Log.d("SPINERR ITEM", "TV SEARCH")
 
-                        listSearch.apply {
-                            adapter = tvShowAdapter
-                        }
-
-                        tvShowAdapter.setOnItemClickCallback(object : TvShowAdapter.OnItemClickCallback{
-                            override fun onItemClick(data: TvShowModel) {
-                                val intent = Intent(this@SearchActivity, DescTvActivity::class.java)
-                                intent.putExtra(DescTvActivity.EXTRA_DATA, data)
-                                startActivity(intent)
-                            }
-
-                        })
                     }
                     else -> loadDataFilm(queries)
                 }
@@ -128,12 +83,12 @@ class SearchActivity : AppCompatActivity() {
 
     private fun loadDataFilm(queries: String){
         showLoading(true)
-        viewModel.setSearchFilm(queries)
+
     }
 
     private fun loadDataTv(queries: String){
         showLoading(true)
-        viewModel.setSearchTv(queries)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

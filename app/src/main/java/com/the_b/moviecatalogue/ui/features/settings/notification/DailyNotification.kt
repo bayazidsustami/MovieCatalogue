@@ -11,6 +11,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.paging.ExperimentalPagingApi
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.ui.main.MainActivity
 import java.util.*
@@ -24,11 +25,13 @@ class DailyNotification : BroadcastReceiver() {
         const val CHANNEL_NAME = "Daily Channel"
     }
 
+    @ExperimentalPagingApi
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         showAlarmNotification(context, "Daily Reminder", "Open the application", NOTIFICATION_ID)
     }
 
+    @ExperimentalPagingApi
     private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int){
         val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

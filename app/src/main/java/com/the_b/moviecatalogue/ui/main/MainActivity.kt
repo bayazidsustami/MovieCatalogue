@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.paging.ExperimentalPagingApi
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.adapter.SectionPagerAdapter
 import com.the_b.moviecatalogue.ui.favorites.FavoriteActivity
@@ -13,6 +14,7 @@ import com.the_b.moviecatalogue.ui.search.SearchActivity
 import com.the_b.moviecatalogue.ui.features.settings.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+@ExperimentalPagingApi
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

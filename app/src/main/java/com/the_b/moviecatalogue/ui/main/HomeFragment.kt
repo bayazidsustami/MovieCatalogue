@@ -6,12 +6,13 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.the_b.moviecatalogue.Injection
 import com.the_b.moviecatalogue.adapter.DiscoverFilmsPagingAdapter
 import com.the_b.moviecatalogue.adapter.DiscoverTvShowPagingAdapter
 import com.the_b.moviecatalogue.adapter.LoadViewStateAdapter
-import com.the_b.moviecatalogue.data.repositories.discover.DiscoverPagingRepository
 import com.the_b.moviecatalogue.databinding.FragmentHomeBinding
 import com.the_b.moviecatalogue.ui.baseView.BaseFragment
 import kotlinx.coroutines.Job
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
+@ExperimentalPagingApi
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private lateinit var viewModel: MainViewModel
@@ -85,7 +87,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         val factory = MainVMFactory(
-            DiscoverPagingRepository.instance
+            Injection.provideDiscoverRepository(requireContext())
         )
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 

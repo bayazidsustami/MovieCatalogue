@@ -12,6 +12,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.paging.ExperimentalPagingApi
 import com.the_b.moviecatalogue.R
 import com.the_b.moviecatalogue.api.ApiBuilder
 import com.the_b.moviecatalogue.api.ApiService
@@ -39,11 +40,13 @@ class ReleaseNotification : BroadcastReceiver() {
     private var filmList = ArrayList<FilmModel>()
     private var filmNotifList = ArrayList<FilmModel>()
 
+    @ExperimentalPagingApi
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         loadData(context)
     }
 
+    @ExperimentalPagingApi
     private fun loadData(context: Context){
         val date = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -72,6 +75,7 @@ class ReleaseNotification : BroadcastReceiver() {
         })
     }
 
+    @ExperimentalPagingApi
     private fun showAlarmNotification(context: Context, film: FilmModel){
         filmNotifList.add(film)
 
