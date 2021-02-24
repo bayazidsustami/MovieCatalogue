@@ -91,4 +91,9 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //room database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }
