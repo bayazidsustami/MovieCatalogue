@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class FilmModel(
     @PrimaryKey
-    var id: Int? = null,
+    var id: Long? = null,
 
     var title: String? = null,
 

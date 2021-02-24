@@ -88,7 +88,7 @@ class ReleaseNotification : BroadcastReceiver() {
             val intent = Intent(context, DescActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(DescActivity.EXTRA_DATA, film.id)
-            val pendingIntent = PendingIntent.getActivity(context, film.id!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val pendingIntent = PendingIntent.getActivity(context, film.id?.toInt()!!, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
             builder = NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_alarm)
@@ -104,7 +104,7 @@ class ReleaseNotification : BroadcastReceiver() {
         } else {
             val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            val  pendingIntent = PendingIntent.getActivity(context, film.id!!, intent, 0)
+            val  pendingIntent = PendingIntent.getActivity(context, film.id?.toInt()!!, intent, 0)
 
             val inboxStyle = NotificationCompat.InboxStyle()
                 .setBigContentTitle("New Films")

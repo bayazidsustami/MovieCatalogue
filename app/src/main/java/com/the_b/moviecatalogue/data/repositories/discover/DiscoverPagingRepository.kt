@@ -20,7 +20,7 @@ class DiscoverPagingRepository(
         val pagingSourceFactory = {database.filmsDao().getFilm()}
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = PAGE_SIZE,
                 enablePlaceholders = false
             ),
             remoteMediator = DiscoverFilmRemoteMediator(
@@ -34,7 +34,7 @@ class DiscoverPagingRepository(
     fun getResultTvStream(): Flow<PagingData<TvShowModel>>{
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = PAGE_SIZE,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {TvShowPagingSource(apiService)}
@@ -42,6 +42,6 @@ class DiscoverPagingRepository(
     }
 
     companion object{
-
+        private const val PAGE_SIZE = 20
     }
 }

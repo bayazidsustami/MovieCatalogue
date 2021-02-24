@@ -14,7 +14,7 @@ interface ApiService {
     @GET("discover/movie")
     suspend fun loadFilm(
         @Query("language") language: String = "en-US",
-        @Query("page") page: Int = 1
+        @Query("page") page: Int
     ): FilmModelResponse
 
     @GET("discover/tv")

@@ -1,5 +1,6 @@
 package com.the_b.moviecatalogue.data.remoteMediator
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -27,23 +28,31 @@ class DiscoverFilmRemoteMediator(
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                 remoteKeys?.nextKey?.minus(1) ?: STARTING_PAGE_INDEX
-            }
-            LoadType.APPEND -> {
-                val remoteKeys = getRemoteKeyForLastItem(state)
-                if (remoteKeys == null || remoteKeys.nextKey == null){
-                    throw InvalidObjectException("Remote Keys should not be null for $loadType")
-                }
-                remoteKeys.nextKey
+                Log.d("REMOTE_APP", "REFRESH")
             }
             LoadType.PREPEND -> {
-                val remoteKeys = getRemoteKeyForFirstItem(state)
-                    ?: throw InvalidObjectException("Remote key and the prevKey should not be null")
+                //prepend load data from prevKey
+                /*val remoteKeys = getRemoteKeyForFirstItem(state)
+                Log.d("REMOTE_APP", "PREPEND")
+
+                if (remoteKeys == null){
+                    throw InvalidObjectException("Remote key and the prevKey should not be null")
+                }
 
                 val prevKey = remoteKeys.prevKey
                 if (prevKey == null){
                     return MediatorResult.Success(endOfPaginationReached = true)
                 }
-                remoteKeys.prevKey
+                remoteKeys.prevKey*/
+                return MediatorResult.Success(endOfPaginationReached = true)
+            }
+            LoadType.APPEND -> {
+                val remoteKeys = getRemoteKeyForLastItem(state)
+                if (remoteKeys?.nextKey == null){
+                    throw InvalidObjectException("Remote Keys should not be null for $loadType")
+                }
+                Log.d("REMOTE_APP", "APPEND items $remoteKeys")
+                remoteKeys.nextKey
             }
         }
 
@@ -60,7 +69,10 @@ class DiscoverFilmRemoteMediator(
                 val prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = listFilms.map {
-                    RemoteKeys(filmId = it.id, prevKey, nextKey)
+                    RemoteKeys(
+                        filmId = it.id,
+                        prevKey = prevKey,
+                        nextKey = nextKey)
                 }
                 discoverDatabase.remoteKeysDao().insertAll(keys)
                 discoverDatabase.filmsDao().insertAll(listFilms)
