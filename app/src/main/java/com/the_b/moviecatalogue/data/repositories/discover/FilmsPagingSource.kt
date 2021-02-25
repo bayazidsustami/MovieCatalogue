@@ -1,5 +1,6 @@
 package com.the_b.moviecatalogue.data.repositories.discover
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.the_b.moviecatalogue.api.ApiService
@@ -13,6 +14,7 @@ class FilmsPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FilmModel> {
         val position = params.key ?: STARTING_PAGE_INDEX
+        Log.d("PAGING", "POSITION ---> ${params.key}")
         return try {
             val response = apiService.loadFilm(page = position)
 

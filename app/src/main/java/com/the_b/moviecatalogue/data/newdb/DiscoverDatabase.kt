@@ -27,7 +27,7 @@ abstract class DiscoverDatabase: RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                DiscoverDatabase::class.java, "Discover.db")
+                DiscoverDatabase::class.java, "MovieCatalogue.db")
                 .build()
     }
 }

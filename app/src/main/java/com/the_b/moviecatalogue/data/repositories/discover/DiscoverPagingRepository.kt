@@ -23,11 +23,7 @@ class DiscoverPagingRepository(
                 pageSize = PAGE_SIZE,
                 enablePlaceholders = false
             ),
-            remoteMediator = DiscoverFilmRemoteMediator(
-                apiService,
-                database
-            ),
-            pagingSourceFactory = pagingSourceFactory
+            pagingSourceFactory = {FilmsPagingSource(apiService)}
         ).flow
     }
 

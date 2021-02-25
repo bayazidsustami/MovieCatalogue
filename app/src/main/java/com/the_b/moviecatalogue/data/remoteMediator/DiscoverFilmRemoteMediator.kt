@@ -28,7 +28,7 @@ class DiscoverFilmRemoteMediator(
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                 remoteKeys?.nextKey?.minus(1) ?: STARTING_PAGE_INDEX
-                Log.d("REMOTE_APP", "REFRESH")
+                Log.d("REMOTE_APP", "REFRESH --> ${remoteKeys?.nextKey?.minus(1)}")
             }
             LoadType.PREPEND -> {
                 //prepend load data from prevKey
@@ -51,7 +51,7 @@ class DiscoverFilmRemoteMediator(
                 if (remoteKeys?.nextKey == null){
                     throw InvalidObjectException("Remote Keys should not be null for $loadType")
                 }
-                Log.d("REMOTE_APP", "APPEND items $remoteKeys")
+                Log.d("REMOTE_APP", "APPEND items --> ${remoteKeys.nextKey}")
                 remoteKeys.nextKey
             }
         }
@@ -66,12 +66,15 @@ class DiscoverFilmRemoteMediator(
                     discoverDatabase.remoteKeysDao().clearRemoteKeys()
                     discoverDatabase.filmsDao().clearAllFilms()
                 }
-                val prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1
+                /**
+                 * we don't need previous keys because API no need that
+                 */
+                //val prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = listFilms.map {
                     RemoteKeys(
                         filmId = it.id,
-                        prevKey = prevKey,
+                        prevKey = null,
                         nextKey = nextKey)
                 }
                 discoverDatabase.remoteKeysDao().insertAll(keys)
